@@ -1,4 +1,5 @@
 ﻿using DATA.EF_CORE;
+using DATA.Extensions;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -14,6 +15,13 @@ namespace DATA.CONTEXT
 
         public MainDbContext(DbContextOptions<MainDbContext> options) : base(options)
         {
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder = GlobalQueryFillter.BuilCustomFillter(modelBuilder);
+
+            base.OnModelCreating(modelBuilder);
         }
 
     }

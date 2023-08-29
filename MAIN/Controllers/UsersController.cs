@@ -11,7 +11,7 @@ namespace MAIN.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UsersController : ControllerBase
+    public class UsersController : MainControllerBase
     {
         private readonly UserServices _userServices;
 
@@ -23,11 +23,11 @@ namespace MAIN.Controllers
         }
 
         [HttpGet]
-        public List<User> Get()
+        public IActionResult Get()
         {
             var users = _userServices.GetAll().AsNoTracking();
 
-            return (List<User>)users;
+            return OkList(users);
         }
     }
 }
