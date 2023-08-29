@@ -1,4 +1,4 @@
-using DATA_BASE.CONTEXT;
+using DATA.CONTEXT;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -28,7 +28,15 @@ namespace MAIN
         public void ConfigureServices(IServiceCollection services)
         {
             string mySqlConnectionStr = Configuration.GetConnectionString("DefaultConnection");
-            services.AddDbContextPool<MainDbContext>(options => options.UseMySql(mySqlConnectionStr, ServerVersion.AutoDetect(mySqlConnectionStr)));
+            services.AddDbContextPool<MainDbContext>(
+                options => options.UseMySql(
+                    mySqlConnectionStr,
+                    ServerVersion.AutoDetect(mySqlConnectionStr),
+                    b => b.MigrationsAssembly("MAIN")
+                )
+            );
+
+            SERVICE.CoreDependenciesInjection.Inject( services );
 
             services.AddControllers();
         }

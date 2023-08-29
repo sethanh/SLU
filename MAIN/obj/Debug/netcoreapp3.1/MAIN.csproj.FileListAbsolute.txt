@@ -42,3 +42,7 @@ G:\BASE\SLU\MAIN\obj\Debug\netcoreapp3.1\MAIN.csproj.CopyComplete
 G:\BASE\SLU\MAIN\obj\Debug\netcoreapp3.1\MAIN.dll
 G:\BASE\SLU\MAIN\obj\Debug\netcoreapp3.1\MAIN.pdb
 G:\BASE\SLU\MAIN\obj\Debug\netcoreapp3.1\MAIN.genruntimeconfig.cache
+G:\BASE\SLU\MAIN\bin\Debug\netcoreapp3.1\DATA.dll
+G:\BASE\SLU\MAIN\bin\Debug\netcoreapp3.1\DATA.pdb
+G:\BASE\SLU\MAIN\bin\Debug\netcoreapp3.1\SERVICE.dll
+G:\BASE\SLU\MAIN\bin\Debug\netcoreapp3.1\SERVICE.pdb

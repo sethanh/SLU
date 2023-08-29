@@ -338,6 +338,33 @@
             "related": ".xml"
           }
         }
+      },
+      "DATA/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore": "5.0.0"
+        },
+        "compile": {
+          "bin/placeholder/DATA.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/DATA.dll": {}
+        }
+      },
+      "SERVICE/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "dependencies": {
+          "DATA": "1.0.0",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "5.0.0"
+        },
+        "compile": {
+          "bin/placeholder/SERVICE.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/SERVICE.dll": {}
+        }
       }
     }
   },
@@ -980,14 +1007,26 @@
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
+    },
+    "DATA/1.0.0": {
+      "type": "project",
+      "path": "../DATA/DATA.csproj",
+      "msbuildProject": "../DATA/DATA.csproj"
+    },
+    "SERVICE/1.0.0": {
+      "type": "project",
+      "path": "../SERVICE/SERVICE.csproj",
+      "msbuildProject": "../SERVICE/SERVICE.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
+      "DATA >= 1.0.0",
       "Microsoft.EntityFrameworkCore >= 5.0.0",
       "Microsoft.EntityFrameworkCore.Tools >= 5.0.0",
       "Microsoft.VisualStudio.Azure.Containers.Tools.Targets >= 1.18.1",
-      "Pomelo.EntityFrameworkCore.MySql >= 5.0.0-alpha.2"
+      "Pomelo.EntityFrameworkCore.MySql >= 5.0.0-alpha.2",
+      "SERVICE >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -1022,7 +1061,14 @@
       "frameworks": {
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
-          "projectReferences": {}
+          "projectReferences": {
+            "G:\\BASE\\SLU\\DATA\\DATA.csproj": {
+              "projectPath": "G:\\BASE\\SLU\\DATA\\DATA.csproj"
+            },
+            "G:\\BASE\\SLU\\SERVICE\\SERVICE.csproj": {
+              "projectPath": "G:\\BASE\\SLU\\SERVICE\\SERVICE.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

@@ -1,11 +1,11 @@
-﻿using DATA_BASE.EF_CORE;
+﻿using DATA.EF_CORE;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace DATA_BASE.CONTEXT
+namespace DATA.CONTEXT
 {
     public class MainDbContext : DbContext
     {
