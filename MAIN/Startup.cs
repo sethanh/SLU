@@ -1,4 +1,5 @@
 using DATA.CONTEXT;
+using MAIN.Basic;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -8,6 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using SERVICE.Configurations;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,6 +29,8 @@ namespace MAIN
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            Cors.ConfigureServices(services);
+
             string mySqlConnectionStr = Configuration.GetConnectionString("DefaultConnection");
             services.AddDbContextPool<MainDbContext>(
                 options => options.UseMySql(
@@ -36,9 +40,13 @@ namespace MAIN
                 )
             );
 
-            SERVICE.CoreDependenciesInjection.Inject( services );
+            Authentication.ConfigureServices(
+               services,
+               Configuration
+             );
 
             services.AddControllers();
+            SERVICE.CoreDependenciesInjection.Inject(services);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -48,13 +56,9 @@ namespace MAIN
             {
                 app.UseDeveloperExceptionPage();
             }
-
-            app.UseHttpsRedirection();
-
             app.UseRouting();
-
+            app.UseAuthentication();
             app.UseAuthorization();
-
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

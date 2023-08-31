@@ -11,3 +11,16 @@ G:\BASE\SLU\SERVICE\obj\Debug\netcoreapp3.1\SERVICE.pdb
 G:\BASE\SLU\SERVICE\bin\Debug\netcoreapp3.1\DATA.dll
 G:\BASE\SLU\SERVICE\bin\Debug\netcoreapp3.1\DATA.pdb
 G:\BASE\SLU\SERVICE\obj\Debug\netcoreapp3.1\SERVICE.csproj.CopyComplete
+D:\Backend\SLU\SERVICE\bin\Debug\netcoreapp3.1\SERVICE.deps.json
+D:\Backend\SLU\SERVICE\bin\Debug\netcoreapp3.1\SERVICE.dll
+D:\Backend\SLU\SERVICE\bin\Debug\netcoreapp3.1\SERVICE.pdb
+D:\Backend\SLU\SERVICE\bin\Debug\netcoreapp3.1\DATA.dll
+D:\Backend\SLU\SERVICE\bin\Debug\netcoreapp3.1\DATA.pdb
+D:\Backend\SLU\SERVICE\obj\Debug\netcoreapp3.1\SERVICE.csproj.AssemblyReference.cache
+D:\Backend\SLU\SERVICE\obj\Debug\netcoreapp3.1\SERVICE.GeneratedMSBuildEditorConfig.editorconfig
+D:\Backend\SLU\SERVICE\obj\Debug\netcoreapp3.1\SERVICE.AssemblyInfoInputs.cache
+D:\Backend\SLU\SERVICE\obj\Debug\netcoreapp3.1\SERVICE.AssemblyInfo.cs
+D:\Backend\SLU\SERVICE\obj\Debug\netcoreapp3.1\SERVICE.csproj.CoreCompileInputs.cache
+D:\Backend\SLU\SERVICE\obj\Debug\netcoreapp3.1\SERVICE.csproj.CopyComplete
+D:\Backend\SLU\SERVICE\obj\Debug\netcoreapp3.1\SERVICE.dll
+D:\Backend\SLU\SERVICE\obj\Debug\netcoreapp3.1\SERVICE.pdb

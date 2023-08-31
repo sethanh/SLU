@@ -8,3 +8,13 @@ G:\BASE\SLU\DATA\obj\Debug\netcoreapp3.1\DATA.AssemblyInfo.cs
 G:\BASE\SLU\DATA\obj\Debug\netcoreapp3.1\DATA.csproj.CoreCompileInputs.cache
 G:\BASE\SLU\DATA\obj\Debug\netcoreapp3.1\DATA.dll
 G:\BASE\SLU\DATA\obj\Debug\netcoreapp3.1\DATA.pdb
+D:\Backend\SLU\DATA\bin\Debug\netcoreapp3.1\DATA.deps.json
+D:\Backend\SLU\DATA\bin\Debug\netcoreapp3.1\DATA.dll
+D:\Backend\SLU\DATA\bin\Debug\netcoreapp3.1\DATA.pdb
+D:\Backend\SLU\DATA\obj\Debug\netcoreapp3.1\DATA.csproj.AssemblyReference.cache
+D:\Backend\SLU\DATA\obj\Debug\netcoreapp3.1\DATA.GeneratedMSBuildEditorConfig.editorconfig
+D:\Backend\SLU\DATA\obj\Debug\netcoreapp3.1\DATA.AssemblyInfoInputs.cache
+D:\Backend\SLU\DATA\obj\Debug\netcoreapp3.1\DATA.AssemblyInfo.cs
+D:\Backend\SLU\DATA\obj\Debug\netcoreapp3.1\DATA.csproj.CoreCompileInputs.cache
+D:\Backend\SLU\DATA\obj\Debug\netcoreapp3.1\DATA.dll
+D:\Backend\SLU\DATA\obj\Debug\netcoreapp3.1\DATA.pdb

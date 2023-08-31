@@ -10,8 +10,7 @@ namespace SERVICE.Services
             UserManager domainService
             ) : base(domainService)
         {
-           
-        }
 
+        }
     }
 }
