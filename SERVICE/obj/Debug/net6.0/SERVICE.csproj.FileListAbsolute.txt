@@ -1,0 +1,15 @@
+G:\BASE\SLU\SERVICE\bin\Debug\net6.0\SERVICE.deps.json
+G:\BASE\SLU\SERVICE\bin\Debug\net6.0\SERVICE.dll
+G:\BASE\SLU\SERVICE\bin\Debug\net6.0\SERVICE.pdb
+G:\BASE\SLU\SERVICE\bin\Debug\net6.0\DATA.dll
+G:\BASE\SLU\SERVICE\bin\Debug\net6.0\DATA.pdb
+G:\BASE\SLU\SERVICE\obj\Debug\net6.0\SERVICE.csproj.AssemblyReference.cache
+G:\BASE\SLU\SERVICE\obj\Debug\net6.0\SERVICE.GeneratedMSBuildEditorConfig.editorconfig
+G:\BASE\SLU\SERVICE\obj\Debug\net6.0\SERVICE.AssemblyInfoInputs.cache
+G:\BASE\SLU\SERVICE\obj\Debug\net6.0\SERVICE.AssemblyInfo.cs
+G:\BASE\SLU\SERVICE\obj\Debug\net6.0\SERVICE.csproj.CoreCompileInputs.cache
+G:\BASE\SLU\SERVICE\obj\Debug\net6.0\SERVICE.csproj.CopyComplete
+G:\BASE\SLU\SERVICE\obj\Debug\net6.0\SERVICE.dll
+G:\BASE\SLU\SERVICE\obj\Debug\net6.0\refint\SERVICE.dll
+G:\BASE\SLU\SERVICE\obj\Debug\net6.0\SERVICE.pdb
+G:\BASE\SLU\SERVICE\obj\Debug\net6.0\ref\SERVICE.dll

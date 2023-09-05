@@ -101,3 +101,15 @@ D:\Backend\SLU\MAIN\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.dl
 D:\Backend\SLU\MAIN\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 D:\Backend\SLU\MAIN\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
 D:\Backend\SLU\MAIN\bin\Debug\netcoreapp3.1\System.Runtime.CompilerServices.Unsafe.dll
+G:\BASE\SLU\MAIN\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+G:\BASE\SLU\MAIN\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Abstractions.dll
+G:\BASE\SLU\MAIN\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.JsonWebTokens.dll
+G:\BASE\SLU\MAIN\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Logging.dll
+G:\BASE\SLU\MAIN\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.dll
+G:\BASE\SLU\MAIN\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+G:\BASE\SLU\MAIN\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Tokens.dll
+G:\BASE\SLU\MAIN\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+G:\BASE\SLU\MAIN\bin\Debug\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll
+G:\BASE\SLU\MAIN\bin\Debug\netcoreapp3.1\System.Runtime.CompilerServices.Unsafe.dll
+G:\BASE\SLU\MAIN\bin\Debug\netcoreapp3.1\System.Text.Encodings.Web.dll
+G:\BASE\SLU\MAIN\bin\Debug\netcoreapp3.1\System.Text.Json.dll
