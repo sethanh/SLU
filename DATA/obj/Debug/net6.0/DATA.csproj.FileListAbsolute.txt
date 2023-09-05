@@ -10,3 +10,15 @@ G:\BASE\SLU\DATA\obj\Debug\net6.0\DATA.dll
 G:\BASE\SLU\DATA\obj\Debug\net6.0\refint\DATA.dll
 G:\BASE\SLU\DATA\obj\Debug\net6.0\DATA.pdb
 G:\BASE\SLU\DATA\obj\Debug\net6.0\ref\DATA.dll
+D:\Backend\SLU\DATA\bin\Debug\net6.0\DATA.deps.json
+D:\Backend\SLU\DATA\bin\Debug\net6.0\DATA.dll
+D:\Backend\SLU\DATA\bin\Debug\net6.0\ref\DATA.dll
+D:\Backend\SLU\DATA\bin\Debug\net6.0\DATA.pdb
+D:\Backend\SLU\DATA\obj\Debug\net6.0\DATA.csproj.AssemblyReference.cache
+D:\Backend\SLU\DATA\obj\Debug\net6.0\DATA.GeneratedMSBuildEditorConfig.editorconfig
+D:\Backend\SLU\DATA\obj\Debug\net6.0\DATA.AssemblyInfoInputs.cache
+D:\Backend\SLU\DATA\obj\Debug\net6.0\DATA.AssemblyInfo.cs
+D:\Backend\SLU\DATA\obj\Debug\net6.0\DATA.csproj.CoreCompileInputs.cache
+D:\Backend\SLU\DATA\obj\Debug\net6.0\DATA.dll
+D:\Backend\SLU\DATA\obj\Debug\net6.0\ref\DATA.dll
+D:\Backend\SLU\DATA\obj\Debug\net6.0\DATA.pdb

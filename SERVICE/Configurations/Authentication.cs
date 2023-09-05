@@ -58,6 +58,7 @@ namespace SERVICE.Configurations
         public static void ConfigureApp(IApplicationBuilder app)
         {
             app.UseAuthentication();
+            app.UseAuthorization();
         }
     }
 }

@@ -302,7 +302,8 @@
         "dependencies": {
           "DATA": "1.0.0",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "6.0.0",
-          "Microsoft.Extensions.DependencyInjection.Abstractions": "6.0.0"
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "6.0.0",
+          "Pomelo.EntityFrameworkCore.MySql": "6.0.0"
         },
         "runtime": {
           "SERVICE.dll": {}

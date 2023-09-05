@@ -1,24 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "G:\\BASE\\SLU\\MAIN\\MAIN.csproj": {}
+    "D:\\Backend\\SLU\\MAIN\\MAIN.csproj": {}
   },
   "projects": {
-    "G:\\BASE\\SLU\\DATA\\DATA.csproj": {
+    "D:\\Backend\\SLU\\DATA\\DATA.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "G:\\BASE\\SLU\\DATA\\DATA.csproj",
+        "projectUniqueName": "D:\\Backend\\SLU\\DATA\\DATA.csproj",
         "projectName": "DATA",
-        "projectPath": "G:\\BASE\\SLU\\DATA\\DATA.csproj",
-        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "G:\\BASE\\SLU\\DATA\\obj\\",
+        "projectPath": "D:\\Backend\\SLU\\DATA\\DATA.csproj",
+        "packagesPath": "C:\\Users\\Khang\\.nuget\\packages\\",
+        "outputPath": "D:\\Backend\\SLU\\DATA\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\Khang\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -59,8 +58,7 @@
             "net47",
             "net471",
             "net472",
-            "net48",
-            "net481"
+            "net48"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -69,25 +67,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "G:\\BASE\\SLU\\MAIN\\MAIN.csproj": {
+    "D:\\Backend\\SLU\\MAIN\\MAIN.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "G:\\BASE\\SLU\\MAIN\\MAIN.csproj",
+        "projectUniqueName": "D:\\Backend\\SLU\\MAIN\\MAIN.csproj",
         "projectName": "MAIN",
-        "projectPath": "G:\\BASE\\SLU\\MAIN\\MAIN.csproj",
-        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "G:\\BASE\\SLU\\MAIN\\obj\\",
+        "projectPath": "D:\\Backend\\SLU\\MAIN\\MAIN.csproj",
+        "packagesPath": "C:\\Users\\Khang\\.nuget\\packages\\",
+        "outputPath": "D:\\Backend\\SLU\\MAIN\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\Khang\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -95,18 +92,17 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\sdk\\7.0.306\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "G:\\BASE\\SLU\\DATA\\DATA.csproj": {
-                "projectPath": "G:\\BASE\\SLU\\DATA\\DATA.csproj"
+              "D:\\Backend\\SLU\\DATA\\DATA.csproj": {
+                "projectPath": "D:\\Backend\\SLU\\DATA\\DATA.csproj"
               },
-              "G:\\BASE\\SLU\\SERVICE\\SERVICE.csproj": {
-                "projectPath": "G:\\BASE\\SLU\\SERVICE\\SERVICE.csproj"
+              "D:\\Backend\\SLU\\SERVICE\\SERVICE.csproj": {
+                "projectPath": "D:\\Backend\\SLU\\SERVICE\\SERVICE.csproj"
               }
             }
           }
@@ -158,8 +154,7 @@
             "net47",
             "net471",
             "net472",
-            "net48",
-            "net481"
+            "net48"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -171,25 +166,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "G:\\BASE\\SLU\\SERVICE\\SERVICE.csproj": {
+    "D:\\Backend\\SLU\\SERVICE\\SERVICE.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "G:\\BASE\\SLU\\SERVICE\\SERVICE.csproj",
+        "projectUniqueName": "D:\\Backend\\SLU\\SERVICE\\SERVICE.csproj",
         "projectName": "SERVICE",
-        "projectPath": "G:\\BASE\\SLU\\SERVICE\\SERVICE.csproj",
-        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "G:\\BASE\\SLU\\SERVICE\\obj\\",
+        "projectPath": "D:\\Backend\\SLU\\SERVICE\\SERVICE.csproj",
+        "packagesPath": "C:\\Users\\Khang\\.nuget\\packages\\",
+        "outputPath": "D:\\Backend\\SLU\\SERVICE\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\Khang\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -203,8 +197,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "G:\\BASE\\SLU\\DATA\\DATA.csproj": {
-                "projectPath": "G:\\BASE\\SLU\\DATA\\DATA.csproj"
+              "D:\\Backend\\SLU\\DATA\\DATA.csproj": {
+                "projectPath": "D:\\Backend\\SLU\\DATA\\DATA.csproj"
               }
             }
           }
@@ -226,6 +220,10 @@
             "Microsoft.Extensions.DependencyInjection.Abstractions": {
               "target": "Package",
               "version": "[6.0.0, )"
+            },
+            "Pomelo.EntityFrameworkCore.MySql": {
+              "target": "Package",
+              "version": "[6.0.0, )"
             }
           },
           "imports": [
@@ -234,8 +232,7 @@
             "net47",
             "net471",
             "net472",
-            "net48",
-            "net481"
+            "net48"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -244,7 +241,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }

@@ -31,14 +31,7 @@ namespace MAIN
         {
             Cors.ConfigureServices(services);
 
-            string mySqlConnectionStr = Configuration.GetConnectionString("DefaultConnection");
-            services.AddDbContextPool<MainDbContext>(
-                options => options.UseMySql(
-                    mySqlConnectionStr,
-                    ServerVersion.AutoDetect(mySqlConnectionStr),
-                    b => b.MigrationsAssembly("MAIN")
-                )
-            );
+            Context.ConfigureServices(services, Configuration);
 
             Authentication.ConfigureServices(
                services,
@@ -57,8 +50,7 @@ namespace MAIN
                 app.UseDeveloperExceptionPage();
             }
             app.UseRouting();
-            app.UseAuthentication();
-            app.UseAuthorization();
+            Authentication.ConfigureApp(app);
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
