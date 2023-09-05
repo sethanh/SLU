@@ -37,6 +37,8 @@ namespace SERVICE.Configurations
             })
                 .AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, options =>
                 {
+                    var keyString  = Configuration.GetSection("Jwt").GetSection("Key").Value;
+                    
                     options.TokenValidationParameters = new TokenValidationParameters
                     {
                         ValidateIssuer = false,

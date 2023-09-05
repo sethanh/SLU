@@ -15,7 +15,6 @@ G:\BASE\SLU\SERVICE\obj\Debug\net6.0\SERVICE.pdb
 G:\BASE\SLU\SERVICE\obj\Debug\net6.0\ref\SERVICE.dll
 D:\Backend\SLU\SERVICE\bin\Debug\net6.0\SERVICE.deps.json
 D:\Backend\SLU\SERVICE\bin\Debug\net6.0\SERVICE.dll
-D:\Backend\SLU\SERVICE\bin\Debug\net6.0\ref\SERVICE.dll
 D:\Backend\SLU\SERVICE\bin\Debug\net6.0\SERVICE.pdb
 D:\Backend\SLU\SERVICE\bin\Debug\net6.0\DATA.dll
 D:\Backend\SLU\SERVICE\bin\Debug\net6.0\DATA.pdb
@@ -28,3 +27,4 @@ D:\Backend\SLU\SERVICE\obj\Debug\net6.0\SERVICE.csproj.CopyComplete
 D:\Backend\SLU\SERVICE\obj\Debug\net6.0\SERVICE.dll
 D:\Backend\SLU\SERVICE\obj\Debug\net6.0\ref\SERVICE.dll
 D:\Backend\SLU\SERVICE\obj\Debug\net6.0\SERVICE.pdb
+D:\Backend\SLU\SERVICE\obj\Debug\net6.0\refint\SERVICE.dll

@@ -52,7 +52,6 @@ D:\Backend\SLU\MAIN\bin\Debug\net6.0\MAIN.exe
 D:\Backend\SLU\MAIN\bin\Debug\net6.0\MAIN.deps.json
 D:\Backend\SLU\MAIN\bin\Debug\net6.0\MAIN.runtimeconfig.json
 D:\Backend\SLU\MAIN\bin\Debug\net6.0\MAIN.dll
-D:\Backend\SLU\MAIN\bin\Debug\net6.0\ref\MAIN.dll
 D:\Backend\SLU\MAIN\bin\Debug\net6.0\MAIN.pdb
 D:\Backend\SLU\MAIN\bin\Debug\net6.0\Humanizer.dll
 D:\Backend\SLU\MAIN\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
@@ -89,3 +88,9 @@ D:\Backend\SLU\MAIN\obj\Debug\net6.0\MAIN.dll
 D:\Backend\SLU\MAIN\obj\Debug\net6.0\ref\MAIN.dll
 D:\Backend\SLU\MAIN\obj\Debug\net6.0\MAIN.pdb
 D:\Backend\SLU\MAIN\obj\Debug\net6.0\MAIN.genruntimeconfig.cache
+D:\Backend\SLU\MAIN\obj\Debug\net6.0\staticwebassets\msbuild.MAIN.Microsoft.AspNetCore.StaticWebAssets.props
+D:\Backend\SLU\MAIN\obj\Debug\net6.0\staticwebassets\msbuild.build.MAIN.props
+D:\Backend\SLU\MAIN\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.MAIN.props
+D:\Backend\SLU\MAIN\obj\Debug\net6.0\staticwebassets\msbuild.buildTransitive.MAIN.props
+D:\Backend\SLU\MAIN\obj\Debug\net6.0\staticwebassets.pack.json
+D:\Backend\SLU\MAIN\obj\Debug\net6.0\refint\MAIN.dll
