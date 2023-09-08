@@ -1,13 +1,15 @@
-﻿using DATA.EF_BASE;
 using System.ComponentModel.DataAnnotations;
 
-namespace DATA.EF_CORE
+namespace MAIN.Dtos.Authentications
 {
-    public class User : EntitieBaseSecurity
+    public class UserRegisterRequest
     {
         public string Name { get; set; }
+
+        [Required]
         public string Email { get; set; }
+
+        [Required]
         public string Password { get; set; }
-        public long? UserGroupId { get; set; }
     }
 }

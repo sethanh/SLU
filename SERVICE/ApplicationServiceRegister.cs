@@ -10,7 +10,8 @@ namespace SERVICE
     {
         public static void Register(IServiceCollection services)
         {
-            services.AddScoped<UserServices>();
+            services.AddScoped<UserService>();
+            services.AddScoped<AuthenticationService>();
         }
     }
 }

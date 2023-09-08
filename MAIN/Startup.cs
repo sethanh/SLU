@@ -35,7 +35,8 @@ namespace MAIN
 
             Authentication.ConfigureServices(
                services,
-               Configuration
+               Configuration,
+               EventType: typeof(UserValidation)
              );
 
             services.AddControllers();

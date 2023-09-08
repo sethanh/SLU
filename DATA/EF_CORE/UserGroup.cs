@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DATA.EF_CORE
 {
-    public class UserGroup : EntitieBase
+    public class UserGroup : EntitiesBase
     {
         public string Name { get; set; }
 

@@ -4,9 +4,9 @@ using SERVICE.Managers;
 
 namespace SERVICE.Services
 {
-    public class UserServices : ApplicationService<User>
+    public class UserService : ApplicationService<User>
     {
-        public UserServices(
+        public UserService(
             UserManager domainService
             ) : base(domainService)
         {
