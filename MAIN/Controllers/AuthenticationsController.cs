@@ -31,10 +31,15 @@ namespace MAIN.Controllers
         [HttpPost("Login")]
         public IActionResult Authenticate(AuthenticateRequest model)
         {
-            var user = _authenticationService.GetAll().AsNoTracking()
-                .FirstOrDefault(u => u.Email == model.Email && u.Password == model.Password);
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(BAD_REQUEST_MESSAGE.MODEL_IS_NOT_VALID);
+            }
 
-            if(user == null)
+            var user = _authenticationService.GetAll().AsNoTracking()
+            .FirstOrDefault(u => u.Email == model.Email && u.Password == model.Password);
+
+            if (user == null)
             {
                 return NotFound();
             }
@@ -42,7 +47,7 @@ namespace MAIN.Controllers
             string jwtKeyString = _config["Jwt:Key"];
             string jwtIssuer = _config["Jwt:Issuer"];
 
-            var token =  _authenticationService.GetJwtSecurityToken(
+            var token = _authenticationService.GetJwtSecurityToken(
                 user,
                 jwtKeyString,
                 jwtIssuer

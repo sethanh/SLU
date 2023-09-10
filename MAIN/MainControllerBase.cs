@@ -48,8 +48,18 @@ namespace MAIN
 
         public MainControllerBase() { }
 
+        public OkObjectResult Ok<TData>(ActionResultDto<TData> value)
+        {
+            return new OkObjectResult(value);
+        }
+
         public override OkObjectResult Ok(object value)
         {
+            if (value is ActionResultDto)
+            {
+                return new OkObjectResult(value);
+            }
+
             var response = new ActionResultDto
             {
                 Data = value,

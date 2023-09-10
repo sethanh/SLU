@@ -7,4 +7,10 @@
         public ActionResultMetaDto Meta { get; set; }
         public object Data { get; set; }
     }
+
+    public class ActionResultDto<T>
+    {
+        public ActionResultMetaDto Meta { get; set; }
+        public T Data { get; set; }
+    }
 }
