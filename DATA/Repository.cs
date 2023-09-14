@@ -1,6 +1,8 @@
 ﻿using DATA.CONTEXT;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace DATA
 {
@@ -59,6 +61,11 @@ namespace DATA
             }
 
             return entity;
+        }
+
+        public Task<object> FindAsync(object id)
+        {
+            throw new NotImplementedException();
         }
     }
 }
