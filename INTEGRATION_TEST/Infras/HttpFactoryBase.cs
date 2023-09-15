@@ -5,6 +5,10 @@ using DATA;
 using INTEGRATION_TEST.Utils;
 using MAIN.Dtos.Results;
 using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace INTEGRATION_TEST.Infras
 {
@@ -23,7 +27,7 @@ namespace INTEGRATION_TEST.Infras
             Repository = repository;
         }
 
-        private object GetId(object entity)
+        private static object GetId(object entity)
         {
             var idProperty = entity.GetType().GetProperty("Id");
             return idProperty == null
@@ -46,7 +50,7 @@ namespace INTEGRATION_TEST.Infras
             response.EnsureSuccessStatusCode();
             var responseData = await response.Content.ReadAsAsync<ActionResultDto<TEntity>>();
 
-            var id = GetId(responseData.Data);
+            var id = HttpFactoryBase<TEntity, TDto>.GetId(responseData.Data);
             return await Repository.FindAsync(id);
         }
 

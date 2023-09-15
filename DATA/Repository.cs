@@ -1,7 +1,9 @@
 ﻿using DATA.CONTEXT;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 
 namespace DATA
@@ -16,7 +18,12 @@ namespace DATA
 
         public IQueryable<T> GetAll()
         {
-            return _context.Set<T>();
+            return _context.Set<T>().AsNoTracking();
+        }
+
+        public async Task<T> FindAsync(object id)
+        {
+            return await _context.Set<T>().FindAsync(id);
         }
 
         public T Add(T entity, bool saveChange = false)
@@ -25,6 +32,17 @@ namespace DATA
             if (saveChange)
             {
                 _context.SaveChanges();
+            }
+
+            return entity;
+        }
+
+        public async Task<T> AddAsync(T entity, bool saveChange = false)
+        {
+            await _context.Set<T>().AddAsync(entity);
+            if (saveChange)
+            {
+                await _context.SaveChangesAsync();
             }
 
             return entity;
@@ -63,9 +81,26 @@ namespace DATA
             return entity;
         }
 
-        public Task<object> FindAsync(object id)
+        public T Delete_HARD(T entity, bool saveChange = false)
         {
-            throw new NotImplementedException();
+            _context.Set<T>().Remove(entity);
+            if (saveChange)
+            {
+                _context.SaveChanges();
+            }
+
+            return entity;
+        }
+
+        public List<T> DeleteRange_HARD(List<T> entity, bool saveChange = false)
+        {
+            _context.Set<T>().RemoveRange(entity);
+            if (saveChange)
+            {
+                _context.SaveChanges();
+            }
+
+            return entity;
         }
     }
 }

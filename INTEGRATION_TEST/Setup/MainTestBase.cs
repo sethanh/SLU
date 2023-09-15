@@ -1,13 +1,9 @@
-﻿using DATA.EF_CORE;
+﻿using Bogus;
+using DATA.EF_CORE;
 using INTEGRATION_TEST.Infras;
 using INTEGRATION_TEST.Seeder;
 using Microsoft.Extensions.DependencyInjection;
 using SERVICE.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xunit;
 
 namespace INTEGRATION_TEST.Setup
@@ -19,6 +15,7 @@ namespace INTEGRATION_TEST.Setup
 
         public virtual int HttpTimeoutMs => 5000;
 
+        public readonly Faker Faker = new Faker("vi");
         public EntityFactories Factories { get; private set; }
 
         public SeederBase Seeder { get; private set; }
@@ -33,7 +30,6 @@ namespace INTEGRATION_TEST.Setup
         {
             _mainApp = mainApp;
             _serviceScope = mainApp.ServiceProvider.CreateScope();
-
         }
 
         public virtual Task DisposeAsync()
