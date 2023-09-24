@@ -2,12 +2,6 @@
 using INTEGRATION_TEST.Setup;
 using MAIN.Dtos.Authentications;
 using MAIN.Dtos.Results;
-using SALON_HAIR_TEST_CORE.Utils;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xunit;
 
 namespace INTEGRATION_TEST.MAIN.Authentications

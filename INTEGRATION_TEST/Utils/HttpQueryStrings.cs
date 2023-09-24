@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.Text;
 
-namespace SALON_HAIR_TEST_CORE.Utils
+namespace Core.Utils
 {
     public static class HttpQueryStrings
     {

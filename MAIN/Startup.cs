@@ -17,7 +17,7 @@ using System.Threading.Tasks;
 
 namespace MAIN
 {
-    public class Startup
+    public partial class Startup
     {
         public Startup(IConfiguration configuration)
         {

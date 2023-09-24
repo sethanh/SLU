@@ -1,20 +1,24 @@
 ﻿
 
+using Bogus;
+using DATA;
+using DATA.EF_CORE;
+using INTEGRATION_TEST.Infras;
+using MAIN.Dtos.Authentications;
+
 namespace INTEGRATION_TEST.Factories
 {
-    public class AuthenticationFactory : HttpFactoryBase<Product, ProductCreateDto>
+    public class AuthenticationFactory : HttpFactoryBase<User, UserRegisterRequest>
     {
         public override string CreateUri => "/products";
 
-        public AuthenticationFactory(HttpClient apiClient, Repository<Product> repository) : base(apiClient, repository)
+        public AuthenticationFactory(HttpClient apiClient, Repository<User> repository) : base(apiClient, repository)
         {
         }
 
-        public override ProductCreateDto FakeDto()
+        public override UserRegisterRequest FakeDto()
         {
-            return new Faker<ProductCreateDto>()
-                .RuleFor(c => c.Name, f => f.Name.FullName())
-                .RuleFor(c => c.Price, f => f.PickRandom<decimal>(10_000, 20_000, 50_000));
+            return new Faker<UserRegisterRequest>();
         }
     }
 }

@@ -1,10 +1,14 @@
 ﻿using Bogus;
+using Core.XunitExtensions.Attributes;
 using DATA.EF_CORE;
 using INTEGRATION_TEST.Infras;
 using INTEGRATION_TEST.Seeder;
+using INTEGRATION_TEST.Setup;
 using Microsoft.Extensions.DependencyInjection;
 using SERVICE.Services;
 using Xunit;
+[assembly: TestFramework("Core.XunitExtensions.XunitTestFrameworkWithAssemblyFixture", "Core")]
+[assembly: AssemblyFixture(typeof(MainApp))]
 
 namespace INTEGRATION_TEST.Setup
 {
@@ -39,15 +43,11 @@ namespace INTEGRATION_TEST.Setup
 
         public virtual async Task InitializeAsync()
         {
-            AuthState = new MainSession(_serviceScope.ServiceProvider);
-
             var factoryClient = _mainApp.CreateClient();
-            SetupClientWithAuth(factoryClient, AuthState.User);
             Factories = new EntityFactories(_serviceScope.ServiceProvider, factoryClient);
             Seeder = new SeederBase(Factories);
 
             AppClient = _mainApp.CreateClient();
-            SetupClientWithAuth(AppClient, AuthState.User);
             AppClient.Timeout = TimeSpan.FromMilliseconds(HttpTimeoutMs);
 
             await SeedTestData();
