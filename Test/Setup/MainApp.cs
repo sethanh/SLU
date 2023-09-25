@@ -1,32 +1,20 @@
-﻿using MAIN;
-using Microsoft.AspNetCore.TestHost;
-using Microsoft.AspNetCore;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MAIN;
+using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.DependencyInjection;
-using Bogus;
-using Test.Seeders;
-using DATA.EF_CORE;
+using Microsoft.AspNetCore.TestHost;
 
 namespace Test.Setup
 {
-    public abstract class MainApp : IAsyncLifetime
+    public class MainApp
     {
-        private readonly TestServer _instance;
-
-        public IServiceScope _serviceScope { get; private set; }
-
-        public readonly Faker Faker = new("vi");
-
-        public HttpClient AnonymousClient;
-        public HttpClient AppClient { get; private set; }
-        public SeedData SeedData { get; set; }
-        public SeederBase Seeder { get; private set; }
-        public MainSession MainSession { get; private set; }
+        public readonly TestServer _instance;
+        public IServiceProvider ServiceProvider { get => _instance.Host.Services; }
+        public HttpClient AnonymousClient { get; protected set; }
 
         public MainApp()
         {
@@ -34,34 +22,18 @@ namespace Test.Setup
                .UseStartup<Startup>()
                .UseEnvironment("Test"));
             AnonymousClient = _instance.CreateClient();
-            AppClient = _instance.CreateClient();
-            _serviceScope = _instance.Host.Services.CreateScope();
+            AnonymousClient.GetAsync("/WeatherForecast").Wait();
         }
 
-        public abstract Task SeedTestData();
-
-        public virtual async Task InitializeAsync()
+        public HttpClient CreateClient()
         {
-            var factoryClient = _instance.CreateClient();
-
-            await SeedTestData();
+            return _instance.CreateClient();
         }
 
-        public Task DisposeAsync()
+        public void Dispose()
         {
-            AnonymousClient.Dispose();
-            AppClient.Dispose();
             _instance.Dispose();
-            return Task.CompletedTask;
+            AnonymousClient.Dispose();
         }
-
-        public void SetupClientWithAuth(HttpClient httpClient, User user)
-        {
-            //var authService = _serviceScope.ServiceProvider.GetRequiredService<AuthService>();
-            //var tokens = authService.RequestToken(user);
-            //httpClient.DefaultRequestHeaders.Add("Authorization", $"Bearer {tokens.Token}");
-        }
-
-
     }
 }
