@@ -22,7 +22,9 @@ namespace SERVICE.Helpers
             {
                 new(JwtRegisteredClaimNames.Sub, user.Id.ToString()),
                 new("UserId", user.Id.ToString()),
-                new("Name", user.Name)
+                new("ShopId", user.ShopId.ToString()),
+                new("ShopBranchId", user.ShopBranchId.ToString()),
+                new("Email", user.Email.ToString()),
             };
             var key = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(jwtKeyString));
 

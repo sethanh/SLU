@@ -10,14 +10,14 @@ using Test.Setup;
 
 namespace Test.Main.Authentications
 {
-    public class Register : MainApp
+    [Collection("Authentications")]
+    public class Register : MainTestBase
     {
 
         private const string API_PATH = "api/Authentications/Register";
 
-        public Register()
+        public Register(MainApp mainApp) : base(mainApp)
         {
-
         }
 
         public override Task SeedTestData()
@@ -26,25 +26,16 @@ namespace Test.Main.Authentications
         }
 
         [Fact]
-        public async Task Index_Get_ReturnsIndexHtmlPage()
-        {
-            // Act
-            var response = await AnonymousClient.GetAsync("/WeatherForecast");
-            // Assert
-            response.EnsureSuccessStatusCode();
-        }
-
-        [Fact]
-        public async Task FilterByDateRange()
+        public async Task RegisterUser()
         {
             var registerBody = new UserRegisterRequest
             {
-                Name = "test",
-                Password = "password",
-                Email = "thas@gmail.com"
+                Name = Faker.Name.FullName(),
+                Password = Faker.Random.String2(10),
+                Email = Faker.Internet.Email()
             };
 
-            var response = await AnonymousClient.PostAsJsonAsync(API_PATH, registerBody);
+            var response = await AppClient.PostAsJsonAsync(API_PATH, registerBody);
             response.EnsureSuccessStatusCode();
             var responseData = await response.Content.ReadAsAsync<ActionResultDto<UserRegisterResponse>>();
 

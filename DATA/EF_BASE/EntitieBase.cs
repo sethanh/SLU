@@ -1,4 +1,5 @@
 ﻿using DATA.EF_BASE;
+using DATA.Enums;
 using System.ComponentModel.DataAnnotations;
 
 namespace DATA.EF_BASE
@@ -7,7 +8,7 @@ namespace DATA.EF_BASE
     {
         [Key]
         public long Id { get; set; }
-        public string Status { get; set; }
-  
+        public string Status { get; set; } = STATUS.ENABLE;
+
     }
 }

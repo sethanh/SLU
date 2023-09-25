@@ -11,5 +11,8 @@ namespace MAIN.Dtos.Authentications
 
         [Required]
         public string Password { get; set; }
+
+        public long? SalonId { get; set; }
+        public long? SalonBranchId { get; set; }
     }
 }

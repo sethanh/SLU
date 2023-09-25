@@ -12,6 +12,9 @@ namespace SERVICE
         {
             services.AddScoped<UserService>();
             services.AddScoped<AuthenticationService>();
+
+            services.AddScoped<ShopBranchService>();
+            services.AddScoped<ShopService>();
         }
     }
 }

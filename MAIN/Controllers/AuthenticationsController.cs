@@ -7,7 +7,7 @@ using MAIN.Dtos.Authentications;
 using DATA.EF_CORE;
 using System;
 using DATA.Enums;
-
+using Microsoft.AspNetCore.Authorization;
 
 namespace MAIN.Controllers
 {
@@ -53,10 +53,11 @@ namespace MAIN.Controllers
                 jwtIssuer
             );
 
-            var result = new AuthenticateResponse(user, token);
+            var result = AuthenticateResponse.Create(user, token);
             return Ok(result);
         }
 
+        [Authorize]
         [HttpPost("Register")]
         public IActionResult UserRegister(UserRegisterRequest userRegister)
         {
@@ -68,7 +69,7 @@ namespace MAIN.Controllers
                 return BadRequest(BAD_REQUEST_MESSAGE.EXISTED_USER);
             }
 
-            var lengthPassword = userRegister.Password.Count();
+            var lengthPassword = userRegister.Password.Length;
 
             if (lengthPassword < minLengthPassword)
             {
@@ -80,10 +81,10 @@ namespace MAIN.Controllers
                 Email = userRegister.Email,
                 Name =  userRegister.Name,
                 Password = userRegister.Password,
-                SecurityStamp = DateTime.Now.ToString(),
                 Created = DateTime.Now,
                 Updated = DateTime.Now,
-                Status = STATUS.ENABLE
+                ShopBranchId = CurrentShopBranchId,
+                ShopId = CurrentShopId
             };
 
            _authenticationService.Add(newUser);

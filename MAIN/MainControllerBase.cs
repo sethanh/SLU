@@ -3,12 +3,62 @@ using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using DATA.Extensions;
 using System.Linq;
+using DATA.EF_CORE;
+using SERVICE.Services;
+using System.IdentityModel.Tokens.Jwt;
 
 namespace MAIN
 {
     public class MainControllerBase : ControllerBase
     {
         private const int DEFAULT_ROW_PER_PAGE = 20;
+        public MainControllerBase() {}
+
+        public long CurrentUserId
+        {
+            get
+            {
+                var currentUserId = User.Claims.Where(c => c.Subject.NameClaimType == JwtRegisteredClaimNames.Sub)
+                    .FirstOrDefault()
+                    .Value;
+
+                return long.Parse(currentUserId);
+            }
+        }
+
+        public long CurrentShopId
+        {
+            get
+            {
+                long currentCustomerSalonId = long.Parse(User.Claims.Where(c => c.Type == "ShopId")
+                    .FirstOrDefault()
+                    .Value);
+
+                return currentCustomerSalonId;
+            }
+        }
+
+        public long CurrentShopBranchId
+        {
+            get
+            {
+                long currentCustomerSalonId = long.Parse(User.Claims.Where(c => c.Type == "ShopBranchId")
+                    .FirstOrDefault()
+                    .Value);
+
+                return currentCustomerSalonId;
+            }
+        }
+
+        public string CurrentUserEmail
+        {
+            get
+            {
+                return User.Claims.Where(c => c.Type == "Email")
+                    .FirstOrDefault()
+                    .Value;
+            }
+        }
 
         public int Page
         {
@@ -45,8 +95,6 @@ namespace MAIN
                 return orderType;
             }
         }
-
-        public MainControllerBase() { }
 
         public OkObjectResult Ok<TData>(ActionResultDto<TData> value)
         {

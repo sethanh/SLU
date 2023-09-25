@@ -10,9 +10,11 @@ namespace DATA.CONTEXT
 {
     public class MainDbContext : DbContext
     {
+        public DbSet<Shop> Shops { get; set; }
+        public DbSet<ShopBranch> ShopBranchs { get; set; }
         public DbSet<UserGroup> UserGroups { get; set; }
         public DbSet<User> Users { get; set; }
-
+        
         public MainDbContext(DbContextOptions<MainDbContext> options) : base(options)
         {
         }

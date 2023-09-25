@@ -1,16 +1,14 @@
-﻿using MAIN;
-using Microsoft.AspNetCore.TestHost;
-using Microsoft.AspNetCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using Bogus;
 using Test.Seeders;
 using DATA.EF_CORE;
+using MAIN.Dtos.Authentications;
+using MAIN.Dtos.Results;
+using Test.Infras;
+using Test.Setup;
+using TechTalk.SpecFlow.xUnit.SpecFlowPlugin;
+
+[assembly: AssemblyFixture(typeof(MainApp))]
 
 namespace Test.Setup
 {
@@ -19,8 +17,12 @@ namespace Test.Setup
         private readonly MainApp _mainApp;
         private readonly IServiceScope _serviceScope;
 
+        public virtual int HttpTimeoutMs => 180000;
+
         public readonly Faker Faker = new("vi");
         public HttpClient AppClient { get; private set; }
+        public EntityFactories Factories { get; private set; }
+
         public SeedData SeedData { get; set; }
         public SeederBase Seeder { get; private set; }
         public MainSession MainSession { get; private set; }
@@ -35,7 +37,13 @@ namespace Test.Setup
 
         public virtual async Task InitializeAsync()
         {
-            var factoryClient = _mainApp.CreateClient();
+            MainSession = new MainSession(_serviceScope.ServiceProvider);
+
+            AppClient = _mainApp.CreateClient();
+
+            await SetupClientWithAuth(AppClient, MainSession.User);
+
+            Factories = new EntityFactories(_serviceScope.ServiceProvider, AppClient);
 
             await SeedTestData();
         }
@@ -47,13 +55,30 @@ namespace Test.Setup
             return Task.CompletedTask;
         }
 
-        public void SetupClientWithAuth(HttpClient httpClient, User user)
+        public static async Task<Task> SetupClientWithAuth(HttpClient httpClient, User user)
         {
-            //var authService = _serviceScope.ServiceProvider.GetRequiredService<AuthService>();
-            //var tokens = authService.RequestToken(user);
-            //httpClient.DefaultRequestHeaders.Add("Authorization", $"Bearer {tokens.Token}");
+            string loginPath = "api/Authentications/Login";
+            var loginBody = new AuthenticateRequest
+            {
+                Password = user.Password,
+                Email = user.Email
+            };
+
+            var response = await httpClient.PostAsJsonAsync(loginPath, loginBody);
+            response.EnsureSuccessStatusCode();
+            var responseBody = await response.Content.ReadAsAsync<ActionResultDto<AuthenticateResponse>>();
+
+            httpClient.DefaultRequestHeaders.Add("Authorization", $"Bearer {responseBody.Data.Token}");
+            
+            return Task.CompletedTask;
         }
 
+        public HttpClient RegisterClient()
+        {
+            var httpClient = _mainApp.CreateClient();
+
+            return httpClient;
+        }
 
     }
 }

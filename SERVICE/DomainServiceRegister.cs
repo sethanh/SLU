@@ -11,6 +11,9 @@ namespace SERVICE
         public static void Register(IServiceCollection services)
         {
             services.AddScoped<UserManager>();
+
+            services.AddScoped<ShopBranchManager>();
+            services.AddScoped<ShopManager>();
         }
     }
 }

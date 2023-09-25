@@ -14,9 +14,4 @@
     <ProjectReference Include="..\DATA\DATA.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Dtos\" />
-    <Folder Include="Values\" />
-  </ItemGroup>
-
 </Project>
