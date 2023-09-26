@@ -65,7 +65,7 @@ namespace MAIN.Controllers
             return OkList(UserDto.Create(users));
         }
 
-        [HttpPut("userId")]
+        [HttpPut("{userId}")]
         public IActionResult UpdateUser([FromBody] UserDto model, [FromRoute] long userId)
         {
             var user = _userService.GetAll().AsNoTracking()
