@@ -35,6 +35,11 @@ jobs:
     - name: Build
       run: dotnet build SLU.sln --configuration Release --no-restore
 
+    - name: Grant All Privileges
+      run: |
+           mysql -h 127.0.0.1 -u root -proot -e "GRANT ALL PRIVILEGES ON *.* TO 'easysalon'@'%' WITH GRANT OPTION;"
+           mysql -h 127.0.0.1 -u root -proot -e "FLUSH PRIVILEGES;"
+
     - name: Update-database
       run: |
            dotnet tool install --global dotnet-ef
