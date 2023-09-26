@@ -26,5 +26,14 @@ namespace DATA.CONTEXT
             base.OnModelCreating(modelBuilder);
         }
 
+        public void ResetTracker()
+        {
+            var entries = this.ChangeTracker.Entries().ToList();
+            foreach (var entry in entries)
+            {
+                entry.State = EntityState.Detached;
+            }
+        }
+
     }
 }

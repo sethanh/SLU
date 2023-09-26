@@ -22,4 +22,9 @@ namespace DATA.Enums
         public const string CREATE_USER_SUCCESS = "CREATE_USER_SUCCESS";
     }
 
+    public static class SECURITY_VALUE
+    {
+        public const string PASSWORD = "********";
+    }
+
 }

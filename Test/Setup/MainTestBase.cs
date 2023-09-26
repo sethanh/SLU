@@ -38,12 +38,10 @@ namespace Test.Setup
         public virtual async Task InitializeAsync()
         {
             MainSession = new MainSession(_serviceScope.ServiceProvider);
-
             AppClient = _mainApp.CreateClient();
-
             await SetupClientWithAuth(AppClient, MainSession.User);
-
             Factories = new EntityFactories(_serviceScope.ServiceProvider, AppClient);
+            Seeder = new SeederBase(Factories);
 
             await SeedTestData();
         }

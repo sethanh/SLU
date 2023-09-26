@@ -31,5 +31,11 @@ namespace DATA
         {
             Context.Dispose();
         }
+
+        public void ResetTracker()
+        {
+            Context.ResetTracker();
+        }
     }
+
 }
