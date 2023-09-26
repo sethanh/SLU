@@ -48,8 +48,6 @@ namespace Test.Setup
 
         public Task DisposeAsync()
         {
-            AppClient.Dispose();
-            _mainApp.Dispose();
             return Task.CompletedTask;
         }
 
