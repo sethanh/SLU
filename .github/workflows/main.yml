@@ -36,8 +36,10 @@ jobs:
       run: dotnet build SLU.sln --configuration Release --no-restore
 
     - name: Update-database
-      run:  dotnet tool install --global dotnet-ef
-            dotnet ef database update
+      run: |
+           dotnet new tool-manifest
+           dotnet tool install --local dotnet-ef --version 2.2.6
+           dotnet ef database update --project MAIN --startup-project MAIN
             
     - name: Test
       run: dotnet test SLU.sln --configuration Release --no-build --verbosity normal --collect:"XPlat Code Coverage" --results-directory ./coverage
