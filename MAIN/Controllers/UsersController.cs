@@ -81,7 +81,7 @@ namespace MAIN.Controllers
             user.Password = model.Password != SECURITY_VALUE.PASSWORD ? model.Password : user.Password;
             user.UserGroupId = model.UserGroupId ?? user.UserGroupId;
             user.Updated = DateTime.Now;
-            user.UpdatedBy = CurrentUserEmail;
+            user.UpdatedBy = CurrentUserEmail;     
 
             _userService.Update( user );
 
