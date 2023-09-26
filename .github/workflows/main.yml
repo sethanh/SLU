@@ -24,3 +24,6 @@ jobs:
 
     - name: Build
       run: dotnet build SLU.sln --configuration Release --no-restore
+
+    - name: Test
+      run: dotnet test SLU.sln --configuration Release --no-build --verbosity normal --collect:"XPlat Code Coverage" --results-directory ./coverage
