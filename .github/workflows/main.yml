@@ -71,3 +71,7 @@ jobs:
       with:
         recreate: true
         path: code-coverage-results.md
+    - name: Code Coverage Report Action
+      uses: acid-chicken/lcov-reporter-action@v0.4.1
+      with:
+        lcov-file: ./coverage/lcov.info
