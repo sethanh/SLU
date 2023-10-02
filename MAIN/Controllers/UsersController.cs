@@ -65,7 +65,7 @@ namespace MAIN.Controllers
             return OkList(UserDto.Create(users));
         }
 
-        [HttpPut("userId")]
+        [HttpPut("{userId}")]
         public IActionResult UpdateUser([FromBody] UserDto model, [FromRoute] long userId)
         {
             var user = _userService.GetAll().AsNoTracking()
@@ -81,7 +81,7 @@ namespace MAIN.Controllers
             user.Password = model.Password != SECURITY_VALUE.PASSWORD ? model.Password : user.Password;
             user.UserGroupId = model.UserGroupId ?? user.UserGroupId;
             user.Updated = DateTime.Now;
-            user.UpdatedBy = CurrentUserEmail;
+            user.UpdatedBy = CurrentUserEmail;     
 
             _userService.Update( user );
 

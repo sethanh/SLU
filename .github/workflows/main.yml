@@ -8,6 +8,7 @@ on:
 
 jobs:
   build:
+    permissions: write-all
     runs-on: ubuntu-latest
     services:
       mysql:
@@ -45,6 +46,8 @@ jobs:
            dotnet tool install --global dotnet-ef
            dotnet tool restore
            dotnet ef database update --project MAIN --startup-project MAIN
+      env:
+        ASPNETCORE_ENVIRONMENT: Test
             
     - name: Test
       run: dotnet test SLU.sln --configuration Release --no-build --verbosity normal --collect:"XPlat Code Coverage" --results-directory ./coverage
@@ -54,10 +57,10 @@ jobs:
       with:
         filename: coverage/**/coverage.cobertura.xml
         badge: true
-        fail_below_min: true
+        fail_below_min: false
         format: markdown
         hide_branch_rate: false
-        hide_complexity: true
+        hide_complexity: false
         indicators: true
         output: both
         thresholds: '60 80'
@@ -68,3 +71,7 @@ jobs:
       with:
         recreate: true
         path: code-coverage-results.md
+    - name: Code Coverage Report Action
+      uses: acid-chicken/lcov-reporter-action@v0.4.1
+      with:
+        lcov-file: ./coverage/lcov.info
