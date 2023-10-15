@@ -65,6 +65,20 @@ namespace MAIN.Controllers
             return OkList(UserDto.Create(users));
         }
 
+        [HttpGet("{userId}")]
+        public IActionResult GetByUserId([FromRoute] long userId)
+        {
+            var user = _userService.GetAll().AsNoTracking()
+                .FirstOrDefault(u => u.Id == userId);
+            
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(UserDto.Create(user));
+        }
+
         [HttpPut("{userId}")]
         public IActionResult UpdateUser([FromBody] UserDto model, [FromRoute] long userId)
         {
