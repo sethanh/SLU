@@ -1,22 +1,38 @@
 #See https://aka.ms/customizecontainer to learn how to customize your debug container and how Visual Studio uses this Dockerfile to build your images for faster debugging.
 
-FROM mcr.microsoft.com/dotnet/aspnet:3.1 AS base
+FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS base
 WORKDIR /app
 EXPOSE 80
 EXPOSE 443
 
-FROM mcr.microsoft.com/dotnet/sdk:3.1 AS build
+FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
+
+# Build DATA
+COPY ["DATA/DATA.csproj", "DATA/"]
+RUN dotnet restore "DATA/DATA.csproj"
+COPY ["DATA/*", "DATA/"]
+RUN dotnet build "DATA/DATA.csproj" -c Release
+
+# Build SEVICE
+COPY ["SERVICE/SERVICE.csproj", "SERVICE/"]
+RUN dotnet restore "SERVICE/SERVICE.csproj"
+COPY ["SERVICE/*", "SERVICE/"]
+RUN dotnet build "SERVICE/SERVICE.csproj" -c Release
+
+# Build MAIN
 COPY ["MAIN/MAIN.csproj", "MAIN/"]
 RUN dotnet restore "MAIN/MAIN.csproj"
-COPY . .
-WORKDIR "/src/MAIN"
-RUN dotnet build "MAIN.csproj" -c Release -o /app/build
+COPY ["MAIN/*", "MAIN/"]
+RUN dotnet build "MAIN/MAIN.csproj" -c Release
 
 FROM build AS publish
-RUN dotnet publish "MAIN.csproj" -c Release -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "MAIN/MAIN.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
+
+ARG ASPNETCORE_ENVIRONMENT
+ENV ASPNETCORE_ENVIRONMENT ${ASPNETCORE_ENVIRONMENT}
 ENTRYPOINT ["dotnet", "MAIN.dll"]
