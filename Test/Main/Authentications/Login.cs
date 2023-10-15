@@ -14,7 +14,7 @@ namespace Test.Main.Authentications
     public class Login : MainTestBase
     {
 
-        private const string API_PATH = "api/Authentications/Login";
+        private const string API_PATH = "/Authentications/Login";
 
         public Login(MainApp mainApp) : base(mainApp)
         {

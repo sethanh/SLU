@@ -15,7 +15,7 @@ namespace Test.Main.Users
     [Collection("Users")]
     public class CreateUser : MainTestBase
     {
-        private const string API_PATH = "api/Users";
+        private const string API_PATH = "/Users";
 
         public CreateUser(MainApp mainApp) : base(mainApp)
         {

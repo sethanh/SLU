@@ -12,7 +12,7 @@ using DATA.EF_CORE;
 
 namespace MAIN.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     [Authorize]
     public class UsersController : MainControllerBase

@@ -14,7 +14,7 @@ namespace Test.Main.Authentications
     public class Register : MainTestBase
     {
 
-        private const string API_PATH = "api/Authentications/Register";
+        private const string API_PATH = "/Authentications/Register";
 
         public Register(MainApp mainApp) : base(mainApp)
         {

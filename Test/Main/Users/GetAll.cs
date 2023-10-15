@@ -14,7 +14,7 @@ namespace Test.Main.Users
     [Collection("Users")]
     public class GetAll : MainTestBase
     {
-        private const string API_PATH = "api/Users";
+        private const string API_PATH = "/Users";
 
         public GetAll(MainApp mainApp) : base(mainApp)
         {
