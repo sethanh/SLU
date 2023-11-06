@@ -1,13 +1,4 @@
-﻿using DATA.Enums;
-using MAIN.Dtos.Authentications;
-using MAIN.Dtos.Results;
-using MAIN.Dtos.Users;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Test.Setup;
+﻿using Test.Setup;
 
 namespace Test.Main.WeatherForecasts
 {

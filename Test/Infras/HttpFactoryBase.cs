@@ -1,12 +1,6 @@
 ﻿using DATA;
-using MAIN.Dtos.Results;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+using SERVICE.Dtos.Results;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 using Test.Utils;
 
 namespace Test.Infras

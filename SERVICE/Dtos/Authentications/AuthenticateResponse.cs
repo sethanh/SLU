@@ -1,6 +1,6 @@
 ﻿using DATA.EF_CORE;
 
-namespace MAIN.Dtos.Authentications
+namespace SERVICE.Dtos.Authentications
 {
     public class AuthenticateResponse
     {

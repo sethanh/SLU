@@ -1,4 +1,4 @@
-﻿namespace MAIN.Dtos.Results
+﻿namespace SERVICE.Dtos.Results
 {
     public class ActionResultMetaDto
     {

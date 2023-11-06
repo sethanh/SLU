@@ -1,12 +1,7 @@
 ﻿using Bogus;
 using DATA;
 using DATA.EF_CORE;
-using MAIN.Dtos.Users;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using SERVICE.Dtos.Users;
 using Test.Infras;
 
 namespace Test.Factories

@@ -2,8 +2,8 @@
 using Bogus;
 using Test.Seeders;
 using DATA.EF_CORE;
-using MAIN.Dtos.Authentications;
-using MAIN.Dtos.Results;
+using SERVICE.Dtos.Authentications;
+using SERVICE.Dtos.Results;
 using Test.Infras;
 using Test.Setup;
 using TechTalk.SpecFlow.xUnit.SpecFlowPlugin;

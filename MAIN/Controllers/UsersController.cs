@@ -4,9 +4,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authorization;
 using System.Linq;
-using MAIN.Dtos.Users;
+using SERVICE.Dtos.Users;
 using DATA.Enums;
-using Microsoft.IdentityModel.Tokens;
 using System;
 using DATA.EF_CORE;
 

@@ -1,12 +1,5 @@
-﻿using DATA.Enums;
-using MAIN.Dtos.Authentications;
-using MAIN.Dtos.Results;
-using MAIN.Dtos.Users;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using SERVICE.Dtos.Results;
+using SERVICE.Dtos.Users;
 using Test.Setup;
 
 namespace Test.Main.Users

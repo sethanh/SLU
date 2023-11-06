@@ -1,11 +1,6 @@
 ﻿using DATA.Enums;
-using MAIN.Dtos.Authentications;
-using MAIN.Dtos.Results;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using SERVICE.Dtos.Authentications;
+using SERVICE.Dtos.Results;
 using Test.Setup;
 
 namespace Test.Main.Authentications

@@ -2,7 +2,7 @@
 using DATA.Enums;
 using System.Collections.Generic;
 
-namespace MAIN.Dtos.Users
+namespace SERVICE.Dtos.Users
 {
     public class UserDto : User
     {

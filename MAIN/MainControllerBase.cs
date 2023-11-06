@@ -1,10 +1,8 @@
-﻿using MAIN.Dtos.Results;
+﻿using SERVICE.Dtos.Results;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using DATA.Extensions;
 using System.Linq;
-using DATA.EF_CORE;
-using SERVICE.Services;
 using System.IdentityModel.Tokens.Jwt;
 
 namespace MAIN

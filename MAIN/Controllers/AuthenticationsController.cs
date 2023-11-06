@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using SERVICE.Services;
 using Microsoft.Extensions.Configuration;
 using Microsoft.EntityFrameworkCore;
-using MAIN.Dtos.Authentications;
+using SERVICE.Dtos.Authentications;
 using DATA.EF_CORE;
 using System;
 using DATA.Enums;
