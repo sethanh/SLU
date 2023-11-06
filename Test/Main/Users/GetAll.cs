@@ -34,6 +34,7 @@ namespace Test.Main.Users
             var responseData = await response.Content.ReadAsAsync<ActionResultDto<List<UserDto>>>();
 
             Assert.NotNull(responseData.Data);
+            Assert.Equal(2, responseData.Data.Count);
         }
     }
 }

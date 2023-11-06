@@ -53,7 +53,7 @@ namespace Test.Setup
 
         public static async Task<Task> SetupClientWithAuth(HttpClient httpClient, User user)
         {
-            string loginPath = "api/Authentications/Login";
+            string loginPath = "Authentications/Login";
             var loginBody = new AuthenticateRequest
             {
                 Password = user.Password,

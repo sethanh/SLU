@@ -39,8 +39,18 @@ namespace Test.Main.Users
             response.EnsureSuccessStatusCode();
             var responseData = await response.Content.ReadAsAsync<ActionResultDto<UserDto>>();
 
+            var userStorage = Factories.User.FindInDatabase(c => c.Email == postUserBody.Email).FirstOrDefault();
+
+            //response Test
             Assert.NotNull(responseData.Data);
             Assert.Equal(postUserBody.Email, responseData.Data.Email);
+
+            //storage Test
+            Assert.NotNull(userStorage);
+            Assert.Equal(userStorage?.Email, postUserBody.Email);
+            Assert.Equal(userStorage?.Name, postUserBody.Name);
+            Assert.Equal(userStorage?.Password, postUserBody.Password);
+
         }
     }
 }

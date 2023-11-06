@@ -13,7 +13,7 @@ namespace Test.Factories
 {
     public class UserFactory : HttpFactoryBase<User, UserDto>
     {
-        public override string CreateUri => "api/Users";
+        public override string CreateUri => "Users";
 
         public UserFactory(HttpClient apiClient, Repository<User> repository) : base(apiClient, repository)
         {
