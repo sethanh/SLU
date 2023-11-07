@@ -35,15 +35,15 @@ namespace Test.Main.Customers
             var customerStorage = Factories.Customer.FindInDatabase(c => c.Email == postCustomerBody.Email).FirstOrDefault();
 
             var getCustomerbyIdResponse =  await AppClient.GetAsync($"{API_PATH}/{responseData.Data.Id}");
-            var getCustomerbyIdResponseData = await response.Content.ReadAsAsync<ActionResultDto<CustomerDto>>();
+            var getCustomerbyIdResponseData = await getCustomerbyIdResponse.Content.ReadAsAsync<ActionResultDto<CustomerDto>>();
 
             var getCustomerbyMobileResponse =  await AppClient.GetAsync($"{API_PATH}?customerMobile={postCustomerBody.Mobile}");
-            var getCustomerbyMobileResponseData = await response.Content.ReadAsAsync<ActionResultDto<List<CustomerDto>>>();
+            var getCustomerbyMobileResponseData = await getCustomerbyMobileResponse.Content.ReadAsAsync<ActionResultDto<List<CustomerDto>>>();
 
             //response create customer test
             Assert.NotNull(responseData.Data);
             Assert.Equal(postCustomerBody.Mobile, responseData.Data.Mobile);
-            Assert.Equal(MainSession.Shop.Id, responseData.Data.Id);
+            Assert.Equal(MainSession.Shop.Id, responseData.Data.ShopId);
 
             //response get customer by Id
             Assert.NotNull(getCustomerbyIdResponseData.Data);
@@ -60,7 +60,7 @@ namespace Test.Main.Customers
             Assert.Equal(customerStorage?.Name, postCustomerBody.Name);
             Assert.Equal(customerStorage?.Mobile, postCustomerBody.Mobile);
             Assert.Equal(customerStorage?.Address, postCustomerBody.Address);
-            Assert.Equal(MainSession.Shop.Id, customerStorage?.Id);
+            Assert.Equal(MainSession.Shop.Id, customerStorage?.ShopId);
 
 
         }
