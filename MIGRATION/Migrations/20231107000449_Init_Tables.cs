@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace MAIN.Migrations
+namespace MIGRATION.Migrations
 {
-    public partial class Add_User_Salon_Tables : Migration
+    public partial class Init_Tables : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

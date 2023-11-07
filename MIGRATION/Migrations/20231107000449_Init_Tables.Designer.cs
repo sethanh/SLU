@@ -8,11 +8,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace MAIN.Migrations
+namespace MIGRATION.Migrations
 {
     [DbContext(typeof(MainDbContext))]
-    [Migration("20230925142342_Add_User_Salon_Tables")]
-    partial class Add_User_Salon_Tables
+    [Migration("20231107000449_Init_Tables")]
+    partial class Init_Tables
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
