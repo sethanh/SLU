@@ -14,7 +14,7 @@ namespace SERVICE.Configurations
                 options => options.UseMySql(
                     mySqlConnectionStr,
                     ServerVersion.AutoDetect(mySqlConnectionStr),
-                    b => b.MigrationsAssembly("MAIN")
+                    b => b.MigrationsAssembly("MIGRATION")
                 )
             );
         }
