@@ -9,6 +9,7 @@ namespace Test.Seeders
 {
     public class SeedData
     {
-        public User User { get; set; }
+        public User? User { get; set; }
+        public Customer? Customer { get; set; }
     }
 }

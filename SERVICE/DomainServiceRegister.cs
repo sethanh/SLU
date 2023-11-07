@@ -14,6 +14,9 @@ namespace SERVICE
 
             services.AddScoped<ShopBranchManager>();
             services.AddScoped<ShopManager>();
+
+            services.AddScoped<CustomerManager>();
+            services.AddScoped<CustomerAccountManager>();
         }
     }
 }

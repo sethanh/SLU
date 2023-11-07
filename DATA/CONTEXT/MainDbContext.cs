@@ -14,6 +14,9 @@ namespace DATA.CONTEXT
         public DbSet<ShopBranch> ShopBranchs { get; set; }
         public DbSet<UserGroup> UserGroups { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<CustomerAccount> CustomerAccounts { get; set; }
+        public DbSet<Customer> Customers { get; set; }
+        public DbSet<CustomerAccountDevice> CustomerAccountDevices { get; set; }
         
         public MainDbContext(DbContextOptions<MainDbContext> options) : base(options)
         {
