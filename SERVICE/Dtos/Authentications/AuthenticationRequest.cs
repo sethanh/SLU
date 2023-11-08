@@ -10,4 +10,13 @@ namespace SERVICE.Dtos.Authentications
         [Required]
         public string Password { get; set; }
     }
+
+    public class CustomerAuthenticateRequest
+    {
+        [Required]
+        public string Mobile { get; set; }
+
+        [Required]
+        public string Password { get; set; }
+    }
 }
