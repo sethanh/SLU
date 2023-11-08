@@ -14,8 +14,6 @@ namespace Test.Setup
         public readonly TestServer _customerAppInstance;
         private readonly MainApp _mainAppInstance;
         public IServiceProvider ServiceProvider { get => _customerAppInstance.Host.Services; }
-        public HttpClient CustomerAnonymousClient { get; protected set; }
-        public HttpClient MainAnonymousClient { get; protected set; }
 
 
         public CustomerApp()
@@ -24,23 +22,22 @@ namespace Test.Setup
             _customerAppInstance = new TestServer(WebHost.CreateDefaultBuilder()
                .UseStartup<Startup>()
                .UseEnvironment("Test"));
-
-            MainAnonymousClient = _mainAppInstance.CreateClient();
-            MainAnonymousClient.GetAsync("/healthz").Wait();
-
-            CustomerAnonymousClient = _customerAppInstance.CreateClient();
-            CustomerAnonymousClient.GetAsync("/WeatherForecast").Wait();
         }
 
-        public HttpClient CreateClient()
+        public HttpClient CreateCustomerClient()
         {
             return _customerAppInstance.CreateClient();
+        }
+
+        public HttpClient CreateMainClient()
+        {
+            return _mainAppInstance.CreateClient();
         }
 
         public void Dispose()
         {
             _customerAppInstance.Dispose();
-            CustomerAnonymousClient.Dispose();
+            _mainAppInstance.Dispose();
         }
 
     }

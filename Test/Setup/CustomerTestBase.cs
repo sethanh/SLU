@@ -85,11 +85,11 @@ namespace Test.Setup
             string jwtKeyString = "PDv7DrqznYL6nv7DrqzjnQYO9JxIsWdcjnQYL6nu0f";
             string jwtIssuer = "708ad04bb42fd613f8cf9ff5f0fa58855f33b994";
 
-            MainClient = Apps.CreateClient();
+            MainClient = Apps.CreateMainClient();
             var mainToken = authenService.GetJwtSecurityToken(MainSession.User, jwtKeyString, jwtIssuer);
             SetupClientWithAuth(MainClient, mainToken);
 
-            CustomerClient = Apps.CreateClient();
+            CustomerClient = Apps.CreateCustomerClient();
             var customerToken = customerAccountService.GetJwtSecurityToken(customerAccount, jwtKeyString, jwtIssuer);
             SetupClientWithAuth(CustomerClient, customerToken);
 
@@ -98,6 +98,9 @@ namespace Test.Setup
                 Token = customerToken,
                 CustomerAccount = customerAccount
             };
+
+            MainAnonymousClient = Apps.CreateMainClient();
+            CustomerAnonymousClient = Apps.CreateCustomerClient();
         }
 
         public void SetupClientWithAuth(HttpClient httpClient, string token)

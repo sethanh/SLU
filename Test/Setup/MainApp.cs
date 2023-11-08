@@ -14,15 +14,12 @@ namespace Test.Setup
     {
         public readonly TestServer _instance;
         public IServiceProvider ServiceProvider { get => _instance.Host.Services; }
-        public HttpClient AnonymousClient { get; protected set; }
 
         public MainApp()
         {
             _instance = new TestServer(WebHost.CreateDefaultBuilder()
                .UseStartup<Startup>()
                .UseEnvironment("Test"));
-            AnonymousClient = _instance.CreateClient();
-            AnonymousClient.GetAsync("/WeatherForecast").Wait();
         }
 
         public HttpClient CreateClient()
@@ -33,7 +30,6 @@ namespace Test.Setup
         public void Dispose()
         {
             _instance.Dispose();
-            AnonymousClient.Dispose();
         }
     }
 }
