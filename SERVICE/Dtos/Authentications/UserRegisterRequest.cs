@@ -15,4 +15,14 @@ namespace SERVICE.Dtos.Authentications
         public long? SalonId { get; set; }
         public long? SalonBranchId { get; set; }
     }
+    
+    public class CustomerAccountRegister
+    {
+        [Required]
+        public string Mobile { get; set; }
+        [Required]
+        public string Password { get; set; }
+        public string Name { get; set; }
+        public string Gender { get; set; }
+    }
 }

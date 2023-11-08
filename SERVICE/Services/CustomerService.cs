@@ -1,4 +1,6 @@
-﻿using DATA.EF_CORE;
+﻿using System.Collections.Generic;
+using System.Linq;
+using DATA.EF_CORE;
 using SERVICE.Dtos.Customers;
 using SERVICE.Managers;
 
@@ -38,6 +40,17 @@ namespace SERVICE.Services
             Add(newCustomer);
 
             return newCustomer;
+        }
+
+        public List<Customer> UpdateWithCustomerAccount(CustomerAccount customerAccount)
+        {
+            var existCustomers = GetAll().Where(c => c.Mobile == customerAccount.Mobile).ToList();
+
+            existCustomers.ForEach(c => {c.CustomerAccountId = customerAccount.Id;});
+
+            UpdateRange(existCustomers);
+
+            return existCustomers;
         }
     }
 }

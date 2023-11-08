@@ -15,6 +15,7 @@ namespace DATA.Enums
         public const string EXISTED_USER = "EXISTED_USER";
         public const string PASSWORD_IS_NOT_VALID = "PASSWORD_IS_NOT_VALID";
         public const string MODEL_IS_NOT_VALID = "MODEL_IS_NOT_VALID";
+        public const string EXISTED_CUSTOMER = "EXISTED_CUSTOMER";
     }
 
     public static class SUCCESS_MESSAGE
