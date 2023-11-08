@@ -27,7 +27,7 @@ namespace Test.Setup
         public SeederBase Seeder { get; private set; }
         public MainSession MainSession { get; private set; }
 
-        public MainTestBase( MainApp mainApp)
+        public MainTestBase(MainApp mainApp)
         {
             _mainApp = mainApp;
             _serviceScope = mainApp.ServiceProvider.CreateScope();

@@ -19,4 +19,22 @@ namespace SERVICE.Dtos.Authentications
             };
         }
     }
+
+    public class CustomerAuthenticateResponse
+    {
+        public long Id { get; set; }
+        public string Mobile { get; set; }
+        public string Token { get; set; }
+
+
+        public static CustomerAuthenticateResponse Create(CustomerAccount customerAccount, string token)
+        {
+            return new CustomerAuthenticateResponse
+            {
+                Id = customerAccount.Id,
+                Mobile = customerAccount.Mobile,
+                Token = token,
+            };
+        }
+    }
 }

@@ -40,5 +40,31 @@ namespace SERVICE.Helpers
 
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
+
+        public static string GetCustomerJwtSecurityToken(
+            CustomerAccount customerAccount,
+            string jwtKeyString,
+            string jwtIssuer
+            )
+        {
+            var claims = new List<Claim>
+            {
+                new(JwtRegisteredClaimNames.Sub, customerAccount.Id.ToString()),
+                new("Mobile", customerAccount.Mobile),
+            };
+            var key = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(jwtKeyString));
+
+            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256Signature);
+
+            var token = new JwtSecurityToken(
+                issuer: jwtIssuer,
+                audience: jwtIssuer,
+                claims: claims,
+                expires: DateTime.Now.AddDays(expiredDate),
+                signingCredentials: creds
+            );
+
+            return new JwtSecurityTokenHandler().WriteToken(token);
+        }
     }
 }
