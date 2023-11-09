@@ -83,7 +83,8 @@ namespace CUSTOMER.Controllers
                 Name = customerRegister.Name,
                 Password = customerRegister.Password,
                 Mobile = customerRegister.Mobile,
-                Gender = customerRegister.Gender
+                Gender = customerRegister.Gender,
+                IsVerify = true
             };
 
            _customerAccountService.Add(newCustomerAccount);

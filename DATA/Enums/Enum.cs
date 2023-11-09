@@ -28,4 +28,25 @@ namespace DATA.Enums
         public const string PASSWORD = "********";
     }
 
+    public static class TIME_UNIT
+    {
+        public const string MINUTE = "MINUTE";
+        public const string HOUR = "HOUR";
+        public const string SECOND = "SECOND";
+    }
+
+    public static class BOOKING_FROM
+    {
+        public const string CUSTOMER_APP = "CUSTOMER_APP";
+        public const string MAIN_APP = "MAIN_APP";
+    }
+
+    public static class BOOKING_STATUS
+    {
+        public const string NEW = "NEW";
+        public const string CONFIRM = "CONFIRM";
+        public const string CHECK_IN = "CHECK_IN";
+        public const string CHECK_OUT = "CHECK_OUT";
+    }
+
 }
