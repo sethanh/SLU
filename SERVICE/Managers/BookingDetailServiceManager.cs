@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace SERVICE.Managers
 {
-    public class BookingDetailServiceManager : DomainService<BookingDetailService>
+    public class BookingDetailObjectManager : DomainService<BookingDetailObject>
     {
-        public BookingDetailServiceManager(UnitOfWork unitOfWork) : base(unitOfWork) { }
+        public BookingDetailObjectManager(UnitOfWork unitOfWork) : base(unitOfWork) { }
 
     }
 }

@@ -11,5 +11,6 @@ namespace Test.Seeders
     {
         public User? User { get; set; }
         public Customer? Customer { get; set; }
+        public Service? Service { get; set; }
     }
 }

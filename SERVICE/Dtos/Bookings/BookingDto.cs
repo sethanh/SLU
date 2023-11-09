@@ -21,5 +21,25 @@ namespace SERVICE.Dtos.Bookings
         public long? ShopId { get; set; }
         public long? ShopBranchId { get; set; }
         public List<BookingDetailDto> BookingDetails { get; set; }
+
+        public static BookingDto Create(Booking booking)
+        {
+            return new BookingDto
+            {
+                Id = booking.Id,
+                Quantity = booking.Quantity,
+                CustomerId = booking.CustomerId,
+                Date = booking.Date,
+                Code = booking.Code,
+                BookingStatus = booking.BookingStatus,
+                BookingFrom = booking.BookingFrom,
+                Note = booking.Note,
+                ShopId = booking.ShopId,
+                ShopBranchId = booking.ShopBranchId,
+                BookingDetails = booking.BookingDetails != null 
+                    ? BookingDetailDto.Create(booking.BookingDetails.ToList()) 
+                    : null
+            };
+        } 
     }
 }

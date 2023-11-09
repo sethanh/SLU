@@ -15,22 +15,26 @@ namespace SERVICE.Services
         {
         }
 
-        public Booking CreateBooking(BookingDto model, string bookingFrom)
+        public Booking CreateBooking(
+            BookingDto model, 
+            string bookingFrom,
+            string createBy
+            )
         {
             var bookingDetailDtos = model.BookingDetails;
             var bookingDetails = new List<BookingDetail>();
 
             foreach (var bookingDetailDto in bookingDetailDtos)
             {
-                var bookingDetailServiceDtos = bookingDetailDto.BookingDetailServices;
-                var bookingDetailServices = new List<BookingDetailService>();
+                var BookingDetailObjectDtos = bookingDetailDto.BookingDetailObjects;
+                var BookingDetailObjects = new List<BookingDetailObject>();
 
-                foreach (var bookingDetailServiceDto in bookingDetailServiceDtos) 
+                foreach (var BookingDetailObjectDto in BookingDetailObjectDtos) 
                 {
-                    bookingDetailServices.Add(
-                        new BookingDetailService
+                    BookingDetailObjects.Add(
+                        new BookingDetailObject
                         {
-                            ServiceId = bookingDetailServiceDto.ServiceId ?? 0,
+                            ServiceId = BookingDetailObjectDto.ServiceId ?? 0,
                         }
                     );
 
@@ -42,7 +46,7 @@ namespace SERVICE.Services
                         Note = bookingDetailDto.Note,
                         ShopId = model.ShopId,
                         ShopBranchId = model.ShopBranchId,
-                        BookingDetailServices = bookingDetailServices
+                        BookingDetailObjects = BookingDetailObjects
                     }
                 );
             }
@@ -57,7 +61,8 @@ namespace SERVICE.Services
                 ShopId = model.ShopId,
                 ShopBranchId = model.ShopBranchId,
                 BookingDetails = bookingDetails,
-                CustomerId = model.CustomerId ?? 0
+                CustomerId = model.CustomerId ?? 0,
+                CreatedBy = createBy
             };
 
             Add(booking);

@@ -45,10 +45,10 @@ namespace Test.Setup
         public virtual async Task InitializeAsync()
         {
             MainSession = new MainSession(_serviceScope.ServiceProvider);
+            SetupCustomer();
             Factories = new EntityFactories(_serviceScope.ServiceProvider, MainClient);
             Seeder = new SeederBase(Factories);
-            SetupCustomer();
-
+    
             await SeedTestData();
         }
 
@@ -63,24 +63,28 @@ namespace Test.Setup
             var customerService = _serviceScope.ServiceProvider.GetRequiredService<CustomerService>();
             var authenService = _serviceScope.ServiceProvider.GetRequiredService<AuthenticationService>();
 
-            var customerDto = new CustomerDto
-            {
-                Name = Faker.Name.FullName(),
-                Mobile = Faker.Phone.PhoneNumber().Replace(" ", string.Empty),
-                Address = Faker.Address.FullAddress()
-            };
-
-            customerService.CreateCustomer(customerDto, MainSession.Shop.Id);
+            string name = Faker.Name.FullName();
+            string mobile = Faker.Phone.PhoneNumber().Replace(" ", string.Empty);
+            string address = Faker.Address.FullAddress();
 
             var customerAccountDto = new CustomerAccountDto
             {
-                Name = Faker.Name.FullName(),
-                Mobile = Faker.Phone.PhoneNumber().Replace(" ", string.Empty),
-                Address = Faker.Address.FullAddress(),
+                Name = name,
+                Mobile = mobile,
+                Address = address,
                 Password = Faker.Random.String2(8)
             };
 
             var customerAccount = customerAccountService.CreateCustomerAccount(customerAccountDto);
+
+            var customerDto = new CustomerDto
+            {
+                Name = name,
+                Mobile = mobile,
+                Address = address
+            };
+
+            customerService.CreateCustomer(customerDto, MainSession.Shop.Id);
 
             string jwtKeyString = "PDv7DrqznYL6nv7DrqzjnQYO9JxIsWdcjnQYL6nu0f";
             string jwtIssuer = "708ad04bb42fd613f8cf9ff5f0fa58855f33b994";

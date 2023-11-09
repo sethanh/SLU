@@ -20,8 +20,8 @@ namespace SERVICE
             services.AddScoped<CustomerAccountService>();
 
             services.AddScoped<BookingService>();
-            services.AddScoped<BookingDetailCoreService>();
-            services.AddScoped<BookingDetailServiceService>();
+            services.AddScoped<BookingDetailService>();
+            services.AddScoped<BookingDetailObjectService>();
 
             services.AddScoped<ServiceService>();
         }

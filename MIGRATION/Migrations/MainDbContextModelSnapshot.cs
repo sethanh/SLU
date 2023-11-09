@@ -122,7 +122,7 @@ namespace MIGRATION.Migrations
                     b.ToTable("BookingsDetails");
                 });
 
-            modelBuilder.Entity("DATA.EF_CORE.BookingDetailService", b =>
+            modelBuilder.Entity("DATA.EF_CORE.BookingDetailObject", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
@@ -160,7 +160,7 @@ namespace MIGRATION.Migrations
 
                     b.HasIndex("ServiceId");
 
-                    b.ToTable("BookingDetailServices");
+                    b.ToTable("BookingDetailObjects");
                 });
 
             modelBuilder.Entity("DATA.EF_CORE.Customer", b =>
@@ -654,10 +654,10 @@ namespace MIGRATION.Migrations
                     b.Navigation("ShopBranch");
                 });
 
-            modelBuilder.Entity("DATA.EF_CORE.BookingDetailService", b =>
+            modelBuilder.Entity("DATA.EF_CORE.BookingDetailObject", b =>
                 {
                     b.HasOne("DATA.EF_CORE.BookingDetail", "BookingDetail")
-                        .WithMany("BookingDetailServices")
+                        .WithMany("BookingDetailObjects")
                         .HasForeignKey("BookingDetailId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -757,7 +757,7 @@ namespace MIGRATION.Migrations
 
             modelBuilder.Entity("DATA.EF_CORE.BookingDetail", b =>
                 {
-                    b.Navigation("BookingDetailServices");
+                    b.Navigation("BookingDetailObjects");
                 });
 
             modelBuilder.Entity("DATA.EF_CORE.Shop", b =>

@@ -20,7 +20,7 @@ namespace DATA.CONTEXT
         public DbSet<Service> Services { get; set; }
         public DbSet<Booking> Bookings { get; set; }
         public DbSet<BookingDetail> BookingsDetails { get; set; }
-        public DbSet<BookingDetailService> BookingDetailServices { get; set; }
+        public DbSet<BookingDetailObject> BookingDetailObjects { get; set; }
         
         public MainDbContext(DbContextOptions<MainDbContext> options) : base(options)
         {

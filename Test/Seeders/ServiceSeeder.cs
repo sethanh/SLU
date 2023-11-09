@@ -1,5 +1,4 @@
-﻿using SERVICE.Dtos.Services;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,13 +8,13 @@ namespace Test.Seeders
 {
     public partial class SeederBase
     {
-        public async Task<SeedData> SeedService(decimal? price = 0)
+        public async Task<SeedData> SeedUser()
         {
-            var service = await _factories.Service.Create(new ServiceDto { Price = price });
+            var user = await _factories.User.Create();
 
             return new SeedData
             {
-                Service = service
+                User = user
             };
         }
     }

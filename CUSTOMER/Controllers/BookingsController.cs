@@ -18,34 +18,59 @@ namespace CUSTOMER.Controllers
     public class BookingsController : CustomerControllerBase
     {
         private readonly BookingService _bookingService;
+        private readonly CustomerService _customerService;
 
         public BookingsController(
             BookingService bookingService,
-            BookingDetailCoreService bookingDetailService
+            CustomerService customerService
         )
         {
             _bookingService = bookingService;
+            _customerService = customerService;
         }
 
         [HttpPost]
         public IActionResult CreateBooking([FromBody] BookingDto model)
         {
-            var newBooking = _bookingService.CreateBooking(model, BOOKING_FROM.CUSTOMER_APP);
+            var customer = _customerService.GetAll().FirstOrDefault(c => c.ShopId == model.ShopId && c.CustomerAccountId == CurrentCustomerAccountId); 
+            if (customer == null)
+            {
+                return BadRequest(BAD_REQUEST_MESSAGE.NOT_EXIST_CUSTOMER);
+            }
 
-            return Ok(newBooking);
+            model.CustomerId = customer.Id;
+
+            var newBooking = _bookingService.CreateBooking(
+                model, 
+                BOOKING_FROM.CUSTOMER_APP,
+                CurrentMobile
+            );
+
+            var bookingResult = _bookingService.GetAll()
+                .Where(b => b.Id == newBooking.Id)
+                .Include(b => b.BookingDetails)
+                    .ThenInclude(b => b.BookingDetailObjects)
+                        .ThenInclude(b => b.Service)
+                .FirstOrDefault();
+
+            return Ok(BookingDto.Create(newBooking));
         }
 
         [HttpGet("{id}")]
         public IActionResult GetCustomerById([FromRoute] long id)
         {
-            var booking = _bookingService.GetAll().FirstOrDefault(c => c.Id == id);
+            var booking = _bookingService.GetAll()
+                .Where(b => b.Id == id)
+                .Include(b => b.BookingDetails)
+                    .ThenInclude(b => b.BookingDetailObjects)
+                .FirstOrDefault();
 
             if (booking == null)
             {
                 return NotFound();
             }
 
-            return Ok(booking);
+            return Ok(BookingDto.Create(booking));
         }
     }
 }

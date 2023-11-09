@@ -2,7 +2,7 @@
 
 namespace DATA.EF_CORE
 {
-    public class BookingDetailService: EntitiesBase
+    public class BookingDetailObject: EntitiesBase
     {
         public long? BookingId { get; set; }
         public Booking Booking { get; set; }

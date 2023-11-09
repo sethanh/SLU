@@ -9,49 +9,49 @@ using DATA.Enums;
 using System;
 using DATA.EF_CORE;
 using SERVICE.Dtos.Bookings;
+using SERVICE.Dtos.Services;
 
 namespace MAIN.Controllers
 {
     [Route("[controller]")]
     [ApiController]
     [Authorize]
-    public class BookingsController : MainControllerBase
+    public class ServicesController : MainControllerBase
     {
-        private readonly BookingService _bookingService;
+        private readonly ServiceService _serviceService;
 
-        public BookingsController(
-            BookingService bookingService
+        public ServicesController(
+            ServiceService serviceService
         )
         {
-            _bookingService = bookingService;
+            _serviceService = serviceService;
         }
 
         [HttpPost]
-        public IActionResult CreateBooking([FromBody] BookingDto model)
+        public IActionResult CreateBooking([FromBody] ServiceDto model)
         {
             model.ShopId = CurrentShopId;
             model.ShopBranchId = CurrentShopBranchId;
 
-            var newBooking = _bookingService.CreateBooking(
+            var newService = _serviceService.CreateService(
                 model, 
-                BOOKING_FROM.MAIN_APP,
                 CurrentUserEmail
             );
 
-            return Ok(BookingDto.Create(newBooking));
+            return Ok(ServiceDto.Create(newService));
         }
 
         [HttpGet("{id}")]
         public IActionResult GetCustomerById([FromRoute] long id)
         {
-            var booking = _bookingService.GetAll().FirstOrDefault(c => c.Id == id);
+            var service = _serviceService.GetAll().FirstOrDefault(c => c.Id == id);
 
-            if (booking == null)
+            if (service == null)
             {
                 return NotFound();
             }
 
-            return Ok(BookingDto.Create(booking));
+            return Ok(ServiceDto.Create(service));
         }
     }
 }

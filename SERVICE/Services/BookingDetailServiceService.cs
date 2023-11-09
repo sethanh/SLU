@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace SERVICE.Services
 {
-    public class BookingDetailServiceService : ApplicationService<BookingDetailService>
+    public class BookingDetailObjectService : ApplicationService<BookingDetailObject>
     {
-        public BookingDetailServiceService(BookingDetailServiceManager domainService) : base(domainService)
+        public BookingDetailObjectService(BookingDetailObjectManager domainService) : base(domainService)
         {
         }
     }

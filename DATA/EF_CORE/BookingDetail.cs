@@ -12,6 +12,6 @@ namespace DATA.EF_CORE
         public long BookingId { get; set; }
         public virtual Booking Booking { get; set; }
         public string Note { get; set; }
-        public ICollection<BookingDetailService> BookingDetailServices { get; set; }
+        public ICollection<BookingDetailObject> BookingDetailObjects { get; set; }
     }
 }

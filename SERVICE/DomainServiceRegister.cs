@@ -20,7 +20,7 @@ namespace SERVICE
 
             services.AddScoped<BookingManager>();
             services.AddScoped<BookingDetailManager>();
-            services.AddScoped<BookingDetailServiceManager>();
+            services.AddScoped<BookingDetailObjectManager>();
 
             services.AddScoped<ServiceManager>();
         }

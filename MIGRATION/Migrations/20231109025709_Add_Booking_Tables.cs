@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace MIGRATION.Migrations
 {
-    public partial class Booking_Tables : Migration
+    public partial class Add_Booking_Tables : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -146,7 +146,7 @@ namespace MIGRATION.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
-                name: "BookingDetailServices",
+                name: "BookingDetailObjects",
                 columns: table => new
                 {
                     Id = table.Column<long>(type: "bigint", nullable: false)
@@ -165,20 +165,20 @@ namespace MIGRATION.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_BookingDetailServices", x => x.Id);
+                    table.PrimaryKey("PK_BookingDetailObjects", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_BookingDetailServices_Bookings_BookingId",
+                        name: "FK_BookingDetailObjects_Bookings_BookingId",
                         column: x => x.BookingId,
                         principalTable: "Bookings",
                         principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_BookingDetailServices_BookingsDetails_BookingDetailId",
+                        name: "FK_BookingDetailObjects_BookingsDetails_BookingDetailId",
                         column: x => x.BookingDetailId,
                         principalTable: "BookingsDetails",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_BookingDetailServices_Services_ServiceId",
+                        name: "FK_BookingDetailObjects_Services_ServiceId",
                         column: x => x.ServiceId,
                         principalTable: "Services",
                         principalColumn: "Id",
@@ -187,18 +187,18 @@ namespace MIGRATION.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateIndex(
-                name: "IX_BookingDetailServices_BookingDetailId",
-                table: "BookingDetailServices",
+                name: "IX_BookingDetailObjects_BookingDetailId",
+                table: "BookingDetailObjects",
                 column: "BookingDetailId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_BookingDetailServices_BookingId",
-                table: "BookingDetailServices",
+                name: "IX_BookingDetailObjects_BookingId",
+                table: "BookingDetailObjects",
                 column: "BookingId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_BookingDetailServices_ServiceId",
-                table: "BookingDetailServices",
+                name: "IX_BookingDetailObjects_ServiceId",
+                table: "BookingDetailObjects",
                 column: "ServiceId");
 
             migrationBuilder.CreateIndex(
@@ -245,7 +245,7 @@ namespace MIGRATION.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "BookingDetailServices");
+                name: "BookingDetailObjects");
 
             migrationBuilder.DropTable(
                 name: "BookingsDetails");
