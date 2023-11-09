@@ -17,3 +17,4 @@ dotnet ef database update
 
 ## 2. Run apps
 - Run `MAIN` for management api
+- Run `CUSTOMER` for customer app api
