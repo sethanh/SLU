@@ -84,7 +84,7 @@ namespace Test.Setup
                 Address = address
             };
 
-            customerService.CreateCustomer(customerDto, MainSession.Shop.Id);
+            var customer = customerService.CreateCustomer(customerDto, MainSession.Shop.Id);
 
             string jwtKeyString = "PDv7DrqznYL6nv7DrqzjnQYO9JxIsWdcjnQYL6nu0f";
             string jwtIssuer = "708ad04bb42fd613f8cf9ff5f0fa58855f33b994";
@@ -100,7 +100,8 @@ namespace Test.Setup
             CustomerSession = new CustomerSession
             {
                 Token = customerToken,
-                CustomerAccount = customerAccount
+                CustomerAccount = customerAccount,
+                Customer = customer
             };
 
             MainAnonymousClient = Apps.CreateMainClient();

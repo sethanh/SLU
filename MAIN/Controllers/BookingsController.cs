@@ -44,7 +44,12 @@ namespace MAIN.Controllers
         [HttpGet("{id}")]
         public IActionResult GetCustomerById([FromRoute] long id)
         {
-            var booking = _bookingService.GetAll().FirstOrDefault(c => c.Id == id);
+            var booking = _bookingService.GetAll()
+                .Where(b => b.Id == id)
+                .Include(b => b.BookingDetails)
+                    .ThenInclude(b => b.BookingDetailObjects)
+                        .ThenInclude(b => b.Service)
+                .FirstOrDefault();
 
             if (booking == null)
             {

@@ -53,7 +53,7 @@ namespace CUSTOMER.Controllers
                         .ThenInclude(b => b.Service)
                 .FirstOrDefault();
 
-            return Ok(BookingDto.Create(newBooking));
+            return Ok(BookingDto.Create(bookingResult));
         }
 
         [HttpGet("{id}")]
@@ -63,6 +63,7 @@ namespace CUSTOMER.Controllers
                 .Where(b => b.Id == id)
                 .Include(b => b.BookingDetails)
                     .ThenInclude(b => b.BookingDetailObjects)
+                        .ThenInclude(b => b.Service)
                 .FirstOrDefault();
 
             if (booking == null)

@@ -11,5 +11,6 @@ namespace Test.Setup
     {
         public string Token { get; set; }
         public CustomerAccount CustomerAccount { get; set; }
+        public Customer Customer { get; set; }
     }
 }

@@ -11,6 +11,7 @@ namespace Test.Infras
         public UserFactory User { get; protected set; }
         public CustomerFactory Customer { get; protected set; }
         public ServiceFactory Service { get; protected set; }
+        public BookingFactory Booking { get; protected set;}
 
         public EntityFactories(IServiceProvider serviceProvider, HttpClient apiClient)
         {
@@ -20,6 +21,7 @@ namespace Test.Infras
             User = new UserFactory(apiClient, unitOfWork.GetRepository<User>());
             Customer = new CustomerFactory(apiClient, unitOfWork.GetRepository<Customer>());
             Service = new ServiceFactory(apiClient, unitOfWork.GetRepository<Service>());
+            Booking = new BookingFactory(apiClient, unitOfWork.GetRepository<Booking>());
         }
     }
 }
