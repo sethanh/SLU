@@ -12,7 +12,7 @@ namespace CUSTOMER
         private const int DEFAULT_ROW_PER_PAGE = 20;
         public CustomerControllerBase() {}
 
-        public long CurrentStaffAccountId
+        public long CurrentCustomerAccountId
         {
             get
             {

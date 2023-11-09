@@ -15,7 +15,6 @@ namespace SERVICE
             _domainService = domainService;
         }
 
-
         public IQueryable<T> GetAll()
         {
             return _domainService.GetAll();

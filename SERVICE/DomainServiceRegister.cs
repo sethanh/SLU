@@ -17,6 +17,12 @@ namespace SERVICE
 
             services.AddScoped<CustomerManager>();
             services.AddScoped<CustomerAccountManager>();
+
+            services.AddScoped<BookingManager>();
+            services.AddScoped<BookingDetailManager>();
+            services.AddScoped<BookingDetailObjectManager>();
+
+            services.AddScoped<ServiceManager>();
         }
     }
 }
