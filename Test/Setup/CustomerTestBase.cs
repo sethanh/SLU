@@ -105,6 +105,8 @@ namespace Test.Setup
 
             MainAnonymousClient = Apps.CreateMainClient();
             CustomerAnonymousClient = Apps.CreateCustomerClient();
+            
+            customerAccountService.ResetTracker();
         }
 
         public void SetupClientWithAuth(HttpClient httpClient, string token)

@@ -39,5 +39,10 @@ namespace SERVICE
         {
             return _domainService.UpdateRange(entities, true);
         }
+
+        public void ResetTracker()
+        {
+            _domainService.ResetTracker();
+        } 
     }
 }

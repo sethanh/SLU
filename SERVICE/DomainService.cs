@@ -46,5 +46,10 @@ namespace SERVICE
             Repository.UpdateRange(entity, saveChange);
             return entity;
         }
+
+        public void ResetTracker()
+        {
+            _unitOfWork.ResetTracker();
+        } 
     }
 }
