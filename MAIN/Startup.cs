@@ -50,6 +50,7 @@ namespace MAIN
             {
                 app.UseDeveloperExceptionPage();
             }
+
             app.UseRouting();
             Authentication.ConfigureApp(app);
             app.UseEndpoints(endpoints =>

@@ -43,7 +43,7 @@ jobs:
 
     - name: Update-database
       run: |
-           dotnet tool install --global dotnet-ef
+           dotnet tool install --global dotnet-ef --version 6.*
            dotnet tool restore
            dotnet ef database update --project MIGRATION --startup-project MIGRATION
       env:

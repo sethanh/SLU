@@ -1,25 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MAIN;
-using Microsoft.AspNetCore;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.TestHost;
+﻿using Test.Infras;
 
 namespace Test.Setup
 {
     public class MainApp
     {
-        public readonly TestServer _instance;
-        public IServiceProvider ServiceProvider { get => _instance.Host.Services; }
+        private readonly MainAppFactory _instance;
+        public IServiceProvider ServiceProvider { get => _instance.Services; }
 
         public MainApp()
         {
-            _instance = new TestServer(WebHost.CreateDefaultBuilder()
-               .UseStartup<Startup>()
-               .UseEnvironment("Test"));
+            _instance = new MainAppFactory();
         }
 
         public HttpClient CreateClient()

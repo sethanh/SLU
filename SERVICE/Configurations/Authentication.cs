@@ -31,11 +31,11 @@ namespace SERVICE.Configurations
             }
 
             services.AddAuthentication(o =>
-            {
-                o.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                o.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-            })
-                .AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, options =>
+                {
+                    o.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                    o.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+                }
+            ).AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, options =>
                 {
                     var keyString  = Configuration.GetSection("Jwt").GetSection("Key").Value;
                     
@@ -54,7 +54,8 @@ namespace SERVICE.Configurations
                     {
                         options.EventsType = EventType;
                     }
-                });
+                }
+            );
         }
 
         public static void ConfigureApp(IApplicationBuilder app)
