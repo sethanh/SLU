@@ -113,12 +113,12 @@ namespace SERVICE.Services
             _customerManager.UpdateWithCustomerAccount(newCustomerAccount);
 
             var token = AuthenticationHelper.GetCustomerJwtSecurityToken(
-                customerAccount,
+                newCustomerAccount,
                 GetJwtKeyString(),
                 GetJwtIssuer()
             );
 
-            var AuthResponse =  CustomerAuthenticateResponse.Create(customerAccount, token);
+            var AuthResponse =  CustomerAuthenticateResponse.Create(newCustomerAccount, token);
 
             return AuthResponse;
         }
