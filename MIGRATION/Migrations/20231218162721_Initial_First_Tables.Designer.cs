@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MIGRATION.Migrations
 {
     [DbContext(typeof(MainDbContext))]
-    [Migration("20231109025709_Add_Booking_Tables")]
-    partial class Add_Booking_Tables
+    [Migration("20231218162721_Initial_First_Tables")]
+    partial class Initial_First_Tables
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,6 +20,80 @@ namespace MIGRATION.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "6.0.0")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
+
+            modelBuilder.Entity("DATA.EF_CORE.AppModule", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Code")
+                        .HasColumnType("longtext");
+
+                    b.Property<DateTime?>("Created")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(250)");
+
+                    b.Property<string>("Status")
+                        .HasColumnType("longtext");
+
+                    b.Property<DateTime?>("Updated")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("AppModules");
+                });
+
+            modelBuilder.Entity("DATA.EF_CORE.AppModulePermission", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    b.Property<bool>("Allowed")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<long>("AppModuleId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("Created")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("longtext");
+
+                    b.Property<bool>("Enabled")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<long?>("ShopId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Status")
+                        .HasColumnType("longtext");
+
+                    b.Property<DateTime?>("Updated")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AppModuleId");
+
+                    b.HasIndex("ShopId");
+
+                    b.ToTable("AppModulePermissions");
+                });
 
             modelBuilder.Entity("DATA.EF_CORE.Booking", b =>
                 {
@@ -610,6 +684,23 @@ namespace MIGRATION.Migrations
                     b.ToTable("UserGroups");
                 });
 
+            modelBuilder.Entity("DATA.EF_CORE.AppModulePermission", b =>
+                {
+                    b.HasOne("DATA.EF_CORE.AppModule", "AppModule")
+                        .WithMany("AppModulePermissions")
+                        .HasForeignKey("AppModuleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("DATA.EF_CORE.Shop", "Shop")
+                        .WithMany()
+                        .HasForeignKey("ShopId");
+
+                    b.Navigation("AppModule");
+
+                    b.Navigation("Shop");
+                });
+
             modelBuilder.Entity("DATA.EF_CORE.Booking", b =>
                 {
                     b.HasOne("DATA.EF_CORE.Customer", "Customer")
@@ -727,7 +818,7 @@ namespace MIGRATION.Migrations
             modelBuilder.Entity("DATA.EF_CORE.ShopBranch", b =>
                 {
                     b.HasOne("DATA.EF_CORE.Shop", null)
-                        .WithMany("ShopBranchs")
+                        .WithMany("ShopBranches")
                         .HasForeignKey("ShopId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -752,6 +843,11 @@ namespace MIGRATION.Migrations
                         .HasForeignKey("UserGroupId");
                 });
 
+            modelBuilder.Entity("DATA.EF_CORE.AppModule", b =>
+                {
+                    b.Navigation("AppModulePermissions");
+                });
+
             modelBuilder.Entity("DATA.EF_CORE.Booking", b =>
                 {
                     b.Navigation("BookingDetails");
@@ -764,7 +860,7 @@ namespace MIGRATION.Migrations
 
             modelBuilder.Entity("DATA.EF_CORE.Shop", b =>
                 {
-                    b.Navigation("ShopBranchs");
+                    b.Navigation("ShopBranches");
 
                     b.Navigation("Users");
                 });
