@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DATA.EF_CORE
 {
-    public class CustomerAccount : EntitieBaseSecurity
+    public class CustomerAccount : EntitiesBaseSecurity
     {
         [Column(TypeName = "nvarchar(250)")]
         public string Name { get; set; }

@@ -5,12 +5,9 @@ using System.ComponentModel.DataAnnotations;
 
 namespace DATA.EF_BASE
 {
-    public class EntitiesBaseShop : EntitiesBase
+    public class EntitiesShopNoBranch : EntitiesBase
     {
         public long? ShopId { get; set; }
         public Shop Shop { get; set; }
-        public long? ShopBranchId  { get; set; }
-        public ShopBranch ShopBranch { get; set; }
-
     }
 }

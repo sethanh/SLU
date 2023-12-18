@@ -27,7 +27,7 @@ namespace Test.Setup
         {
             var shop = _shopFactory.Create( new ShopDto { });
 
-            ShopBranch = shop.ShopBranchs.First();
+            ShopBranch = shop.ShopBranches.First();
             User = shop.Users.First();
             Shop = shop;
         }

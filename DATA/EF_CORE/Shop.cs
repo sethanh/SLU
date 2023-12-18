@@ -22,7 +22,7 @@ namespace DATA.EF_CORE
         public DateTime? OpenTime { get; set;  }
         public DateTime? CloseTime { get; set; }
 
-        public ICollection<ShopBranch> ShopBranchs { get; set; }
+        public ICollection<ShopBranch> ShopBranches { get; set; }
         public ICollection<User> Users { get; set; }
     }
 }

@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DATA.EF_CORE
 {
-    public class Customer : EntitieBaseSecurity
+    public class Customer : EntitiesBaseSecurity
     {
         public string Address { get; set; }
         public DateTime? Dob { get; set; }

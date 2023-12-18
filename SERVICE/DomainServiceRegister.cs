@@ -23,6 +23,9 @@ namespace SERVICE
             services.AddScoped<BookingDetailObjectManager>();
 
             services.AddScoped<ServiceManager>();
+            
+            services.AddScoped<AppModuleManager>();
+            services.AddScoped<AppModulePermissionManager>();
         }
     }
 }

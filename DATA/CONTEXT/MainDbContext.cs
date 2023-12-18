@@ -21,6 +21,8 @@ namespace DATA.CONTEXT
         public DbSet<Booking> Bookings { get; set; }
         public DbSet<BookingDetail> BookingsDetails { get; set; }
         public DbSet<BookingDetailObject> BookingDetailObjects { get; set; }
+        public DbSet<AppModule> AppModules { get; set; }
+        public DbSet<AppModulePermission> AppModulePermissions { get; set; }
         
         public MainDbContext(DbContextOptions<MainDbContext> options) : base(options)
         {
