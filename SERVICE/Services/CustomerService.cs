@@ -41,16 +41,5 @@ namespace SERVICE.Services
 
             return newCustomer;
         }
-
-        public List<Customer> UpdateWithCustomerAccount(CustomerAccount customerAccount)
-        {
-            var existCustomers = GetAll().Where(c => c.Mobile == customerAccount.Mobile).ToList();
-
-            existCustomers.ForEach(c => {c.CustomerAccountId = customerAccount.Id;});
-
-            UpdateRange(existCustomers);
-
-            return existCustomers;
-        }
     }
 }

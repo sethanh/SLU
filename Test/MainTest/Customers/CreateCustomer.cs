@@ -3,7 +3,7 @@ using SERVICE.Dtos.Customers;
 using System.Net.Http.Json;
 using Test.Setup;
 
-namespace Test.Main.Customers
+namespace Test.MainTest.Customers
 {
     [Collection("Customers")]
     public class CreateCustomer : MainTestBase

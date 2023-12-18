@@ -10,6 +10,14 @@ namespace DATA.Enums
         public const string DELETED = "DELETED";
     }
 
+    public static class EXCEPTION_TYPE
+    {
+        public const string NOT_FOUND = "NOT_FOUND";
+        public const string NO_CONTENT = "NO_CONTENT";
+        public const string FORBID = "FORBID";
+        public const string BAD_REQUEST = "BAD_REQUEST";
+    }
+
     public static class BAD_REQUEST_MESSAGE
     {
         public const string EXISTED_USER = "EXISTED_USER";

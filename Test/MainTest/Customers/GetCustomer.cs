@@ -4,7 +4,7 @@ using System.Net.Http.Json;
 using Test.Setup;
 using Test.Seeders;
 
-namespace Test.Main.Customers
+namespace Test.MainTest.Customers
 {
     [Collection("Customers")]
     public class GetCustomer : MainTestBase

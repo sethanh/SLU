@@ -2,7 +2,7 @@ using SERVICE.Dtos.Authentications;
 using SERVICE.Dtos.Results;
 using Test.Setup;
 
-namespace Test.Main.Authentications
+namespace Test.MainTest.Authentications
 {
     [Collection("Authentications")]
     public class Login : MainTestBase
