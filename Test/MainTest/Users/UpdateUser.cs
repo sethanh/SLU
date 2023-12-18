@@ -4,7 +4,7 @@ using SERVICE.Dtos.Users;
 using System.Net.Http.Json;
 using Test.Setup;
 
-namespace Test.Main.Users
+namespace Test.MainTest.Users
 {
     [Collection("Users")]
     public class UpdateUser : MainTestBase

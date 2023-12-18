@@ -1,6 +1,6 @@
 ﻿using Test.Setup;
 
-namespace Test.Main.WeatherForecasts
+namespace Test.MainTest.WeatherForecasts
 {
     [Collection("WeatherForecast")]
     public class GetWeatherForecast : MainTestBase

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using DATA.Extensions;
 using System.Linq;
 using System.IdentityModel.Tokens.Jwt;
+using DATA.Enums;
 
 namespace CUSTOMER
 {
@@ -68,6 +69,17 @@ namespace CUSTOMER
                 }
                 return orderType;
             }
+        }
+
+        public dynamic OKException(Exception exception)
+        {
+            return exception.Message switch
+            {
+                nameof(EXCEPTION_TYPE.NOT_FOUND) => NotFound(),
+                nameof(EXCEPTION_TYPE.NO_CONTENT) => NoContent(),
+                nameof(EXCEPTION_TYPE.FORBID) => Forbid(),
+                _ => BadRequest(exception.Message),
+            };
         }
 
         public OkObjectResult Ok<TData>(ActionResultDto<TData> value)

@@ -11,6 +11,7 @@ using DATA.EF_CORE;
 using SERVICE.Dtos.Authentications;
 using Test.Setup;
 using Microsoft.Extensions.Configuration;
+using SERVICE.Helpers;
 
 namespace Test.Setup
 {
@@ -61,7 +62,7 @@ namespace Test.Setup
         {
             var customerAccountService = _serviceScope.ServiceProvider.GetRequiredService<CustomerAccountService>();
             var customerService = _serviceScope.ServiceProvider.GetRequiredService<CustomerService>();
-            var authenService = _serviceScope.ServiceProvider.GetRequiredService<AuthenticationService>();
+            var authService = _serviceScope.ServiceProvider.GetRequiredService<AuthenticationService>();
 
             string name = Faker.Name.FullName();
             string mobile = Faker.Phone.PhoneNumber().Replace(" ", string.Empty);
@@ -86,15 +87,20 @@ namespace Test.Setup
 
             var customer = customerService.CreateCustomer(customerDto, MainSession.Shop.Id);
 
-            string jwtKeyString = "PDv7DrqznYL6nv7DrqzjnQYO9JxIsWdcjnQYL6nu0f";
-            string jwtIssuer = "708ad04bb42fd613f8cf9ff5f0fa58855f33b994";
-
             MainClient = Apps.CreateMainClient();
-            var mainToken = authenService.GetJwtSecurityToken(MainSession.User, jwtKeyString, jwtIssuer);
+            var mainToken = AuthenticationHelper.GetJwtSecurityToken(
+                MainSession.User, 
+                authService.GetJwtKeyString(), 
+                authService.GetJwtIssuer()
+            );
             SetupClientWithAuth(MainClient, mainToken);
 
             CustomerClient = Apps.CreateCustomerClient();
-            var customerToken = customerAccountService.GetJwtSecurityToken(customerAccount, jwtKeyString, jwtIssuer);
+            var customerToken = AuthenticationHelper.GetCustomerJwtSecurityToken(
+                customerAccount, 
+                customerAccountService.GetJwtKeyString(), 
+                customerAccountService.GetJwtIssuer()
+            );
             SetupClientWithAuth(CustomerClient, customerToken);
 
             CustomerSession = new CustomerSession
