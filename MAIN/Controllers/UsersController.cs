@@ -18,7 +18,6 @@ namespace MAIN.Controllers
     {
         private readonly UserService _userService;
         private readonly IConfiguration _config;
-        private const int minLengthPassword = 6;
 
         public UsersController(
             UserService userService,
@@ -32,24 +31,19 @@ namespace MAIN.Controllers
         [HttpPost]
         public IActionResult CreateUser([FromBody] UserDto model)
         {
-            var lengthPassword = model.Password.Length;
-
-            if (lengthPassword < minLengthPassword)
+            User newUser;
+            try
             {
-                return BadRequest(BAD_REQUEST_MESSAGE.PASSWORD_IS_NOT_VALID);
+                newUser = _userService.CreateUser(
+                    model,
+                    CurrentShopId,
+                    CurrentShopBranchId
+                );
             }
-
-            var newUser = new User
+            catch (Exception exception)
             {
-                Name = model.Name,
-                Email = model.Email,
-                Password = model.Password,
-                UserGroupId = model.UserGroupId,
-                ShopId = CurrentShopId,
-                ShopBranchId = CurrentShopBranchId
-            };
-
-            _userService.Add(newUser);
+                return OKException(exception);
+            }
 
             return Ok(UserDto.Create(newUser));
         }
@@ -81,22 +75,19 @@ namespace MAIN.Controllers
         [HttpPut("{userId}")]
         public IActionResult UpdateUser([FromBody] UserDto model, [FromRoute] long userId)
         {
-            var user = _userService.GetAll().AsNoTracking()
-                .FirstOrDefault(u => u.Id == userId);
-
-            if (user == null)
+            User user;
+            try
             {
-                return NotFound();
+                user = _userService.UpdateUser(
+                    model,
+                    userId,
+                    CurrentUserEmail
+                );
             }
-
-            user.Name = model.Name ?? user.Name;
-            user.Email = model.Email ?? user.Email;
-            user.Password = model.Password != SECURITY_VALUE.PASSWORD ? model.Password : user.Password;
-            user.UserGroupId = model.UserGroupId ?? user.UserGroupId;
-            user.Updated = DateTime.Now;
-            user.UpdatedBy = CurrentUserEmail;     
-
-            _userService.Update( user );
+            catch (Exception exception)
+            {
+                return OKException(exception);
+            }
 
             return Ok(UserDto.Create(user));
         }

@@ -16,8 +16,7 @@ namespace MAIN.Controllers
     public class AuthenticationsController : MainControllerBase
     {
         private readonly AuthenticationService _authenticationService;
-        private readonly IConfiguration _config;
-        private const int minLengthPassword = 6;
+        private readonly IConfiguration _config;        
 
         public AuthenticationsController(
             AuthenticationService userServices,
@@ -36,58 +35,37 @@ namespace MAIN.Controllers
                 return BadRequest(BAD_REQUEST_MESSAGE.MODEL_IS_NOT_VALID);
             }
 
-            var user = _authenticationService.GetAll().AsNoTracking()
-            .FirstOrDefault(u => u.Email == model.Email && u.Password == model.Password);
-
-            if (user == null)
+            AuthenticateResponse authResponse;
+            try
             {
-                return NotFound();
+                authResponse = _authenticationService.GetAuthResponse(
+                    model
+                );
             }
-
-            string jwtKeyString = _config["Jwt:Key"];
-            string jwtIssuer = _config["Jwt:Issuer"];
-
-            var token = _authenticationService.GetJwtSecurityToken(
-                user,
-                jwtKeyString,
-                jwtIssuer
-            );
-
-            var result = AuthenticateResponse.Create(user, token);
-            return Ok(result);
+            catch (Exception exception)
+            {
+                return OKException(exception);
+            }
+            
+            return Ok(authResponse);
         }
 
         [Authorize]
         [HttpPost("Register")]
         public IActionResult UserRegister(UserRegisterRequest userRegister)
         {
-            var user = _authenticationService.GetAll().AsNoTracking()
-                .FirstOrDefault(u => u.Email == userRegister.Email);
-
-            if (user != null)
+            try
             {
-                return BadRequest(BAD_REQUEST_MESSAGE.EXISTED_USER);
+                _authenticationService.RegisterUser(
+                    userRegister,
+                    CurrentShopId,
+                    CurrentShopBranchId
+                );
             }
-
-            var lengthPassword = userRegister.Password.Length;
-
-            if (lengthPassword < minLengthPassword)
+            catch (Exception exception)
             {
-                return BadRequest(BAD_REQUEST_MESSAGE.PASSWORD_IS_NOT_VALID);
+                return OKException(exception);
             }
-
-            var newUser = new User
-            {
-                Email = userRegister.Email,
-                Name =  userRegister.Name,
-                Password = userRegister.Password,
-                Created = DateTime.Now,
-                Updated = DateTime.Now,
-                ShopBranchId = CurrentShopBranchId,
-                ShopId = CurrentShopId
-            };
-
-           _authenticationService.Add(newUser);
 
             var result = new UserRegisterResponse
             {

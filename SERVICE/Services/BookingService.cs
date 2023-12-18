@@ -1,4 +1,5 @@
 ﻿using DATA.EF_CORE;
+using DATA.Enums;
 using SERVICE.Dtos.Bookings;
 using SERVICE.Managers;
 using System;
@@ -11,62 +12,59 @@ namespace SERVICE.Services
 {
     public class BookingService : ApplicationService<Booking>
     {
-        public BookingService(BookingManager domainService) : base(domainService)
+        private readonly CustomerManager _customerManager;
+        private readonly BookingManager _bookingManager;
+        public BookingService(
+            BookingManager domainService,
+            CustomerManager customerManager,
+            BookingManager bookingManager
+            ) : base(domainService)
         {
+            _customerManager = customerManager;
+            _bookingManager = bookingManager;
         }
 
-        public Booking CreateBooking(
+        public Booking CreateBookingFromCustomerApp(
             BookingDto model, 
-            string bookingFrom,
+            long CurrentCustomerAccountId,
             string createBy
             )
         {
-            var bookingDetailDtos = model.BookingDetails;
-            var bookingDetails = new List<BookingDetail>();
-
-            foreach (var bookingDetailDto in bookingDetailDtos)
+            var customer = _customerManager.GetAll()
+                .FirstOrDefault(c => c.ShopId == model.ShopId && c.CustomerAccountId == CurrentCustomerAccountId); 
+            if (customer == null)
             {
-                var BookingDetailObjectDtos = bookingDetailDto.BookingDetailObjects;
-                var BookingDetailObjects = new List<BookingDetailObject>();
-
-                foreach (var BookingDetailObjectDto in BookingDetailObjectDtos) 
-                {
-                    BookingDetailObjects.Add(
-                        new BookingDetailObject
-                        {
-                            ServiceId = BookingDetailObjectDto.ServiceId ?? 0,
-                        }
-                    );
-
-                }
-
-                bookingDetails.Add(
-                    new BookingDetail
-                    {
-                        Note = bookingDetailDto.Note,
-                        ShopId = model.ShopId,
-                        ShopBranchId = model.ShopBranchId,
-                        BookingDetailObjects = BookingDetailObjects
-                    }
-                );
+                throw new Exception(BAD_REQUEST_MESSAGE.NOT_EXIST_CUSTOMER);
             }
 
-            var booking = new Booking
-            {
-                BookingFrom = bookingFrom,
-                BookingStatus = model.BookingStatus,
-                Date = model.Date ?? DateTime.Now,
-                Code = model.Code,
-                Note = model.Note,
-                ShopId = model.ShopId,
-                ShopBranchId = model.ShopBranchId,
-                BookingDetails = bookingDetails,
-                CustomerId = model.CustomerId ?? 0,
-                CreatedBy = createBy
-            };
+            model.CustomerId = customer.Id;
 
-            Add(booking);
-            return booking;
+            var newBooking = _bookingManager.CreateBooking(
+                model,
+                BOOKING_FROM.CUSTOMER_APP,
+                createBy
+            );
+
+            return newBooking;
+        }
+
+        public Booking CreateBookingFromMain(
+            BookingDto model, 
+            long CurrentShopId,
+            long CurrentShopBranchId,
+            string createBy
+            )
+        {
+            model.ShopId = CurrentShopId;
+            model.ShopBranchId = CurrentShopBranchId;
+
+            var newBooking = _bookingManager.CreateBooking(
+                model, 
+                BOOKING_FROM.MAIN_APP,
+                createBy
+            );
+
+            return newBooking;
         }
     }
 }

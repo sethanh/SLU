@@ -32,19 +32,19 @@ namespace CUSTOMER.Controllers
         [HttpPost]
         public IActionResult CreateBooking([FromBody] BookingDto model)
         {
-            var customer = _customerService.GetAll().FirstOrDefault(c => c.ShopId == model.ShopId && c.CustomerAccountId == CurrentCustomerAccountId); 
-            if (customer == null)
+            Booking newBooking;
+            try
             {
-                return BadRequest(BAD_REQUEST_MESSAGE.NOT_EXIST_CUSTOMER);
+                newBooking = _bookingService.CreateBookingFromCustomerApp(
+                    model,
+                    CurrentCustomerAccountId,
+                    CurrentMobile
+                );
             }
-
-            model.CustomerId = customer.Id;
-
-            var newBooking = _bookingService.CreateBooking(
-                model, 
-                BOOKING_FROM.CUSTOMER_APP,
-                CurrentMobile
-            );
+            catch (Exception exception)
+            {
+                return OKException(exception);
+            }
 
             var bookingResult = _bookingService.GetAll()
                 .Where(b => b.Id == newBooking.Id)

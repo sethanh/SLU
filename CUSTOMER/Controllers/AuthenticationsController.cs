@@ -17,7 +17,6 @@ namespace CUSTOMER.Controllers
     public class AuthenticationsController : CustomerControllerBase
     {
         private readonly CustomerAccountService _customerAccountService;
-        private const int minLengthPassword = 6;
 
         public AuthenticationsController(
             CustomerAccountService customerAccountService

@@ -28,17 +28,30 @@ namespace MAIN.Controllers
 
         [HttpPost]
         public IActionResult CreateBooking([FromBody] BookingDto model)
-        {
-            model.ShopId = CurrentShopId;
-            model.ShopBranchId = CurrentShopBranchId;
+        {   
+            Booking newBooking;
+            try
+            {
+                newBooking = _bookingService.CreateBookingFromMain(
+                    model, 
+                    CurrentShopId,
+                    CurrentShopBranchId,
+                    CurrentUserEmail
+                );
+            }
+            catch (Exception exception)
+            {
+                return OKException(exception);
+            }
 
-            var newBooking = _bookingService.CreateBooking(
-                model, 
-                BOOKING_FROM.MAIN_APP,
-                CurrentUserEmail
-            );
+            var bookingResult = _bookingService.GetAll()
+                .Where(b => b.Id == newBooking.Id)
+                .Include(b => b.BookingDetails)
+                    .ThenInclude(b => b.BookingDetailObjects)
+                        .ThenInclude(b => b.Service)
+                .FirstOrDefault();
 
-            return Ok(BookingDto.Create(newBooking));
+            return Ok(BookingDto.Create(bookingResult));
         }
 
         [HttpGet("{id}")]
