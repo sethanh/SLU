@@ -35,6 +35,7 @@ namespace DATA.Enums
     public static class SECURITY_VALUE
     {
         public const string PASSWORD = "********";
+        public const int MIN_LENGTH = 6;
     }
 
     public static class TIME_UNIT

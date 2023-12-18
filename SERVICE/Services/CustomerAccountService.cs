@@ -14,7 +14,6 @@ namespace SERVICE.Services
     {
         private readonly CustomerManager _customerManager;
         private readonly IConfiguration _config;
-        private const int minLengthPassword = 6;
         public CustomerAccountService(
             IConfiguration config,
             CustomerAccountManager domainService,
@@ -94,7 +93,7 @@ namespace SERVICE.Services
 
             var lengthPassword = customerRegister.Password.Length;
 
-            if (lengthPassword < minLengthPassword)
+            if (lengthPassword < SECURITY_VALUE.MIN_LENGTH)
             {
                 throw new Exception(BAD_REQUEST_MESSAGE.PASSWORD_IS_NOT_VALID);
             }
