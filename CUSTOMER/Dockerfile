@@ -7,16 +7,32 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
+
+# Build DATA
+COPY ["DATA/DATA.csproj", "DATA/"]
+RUN dotnet restore "DATA/DATA.csproj"
+COPY ["DATA/*", "DATA/"]
+RUN dotnet build "DATA/DATA.csproj" -c Release
+
+# Build SEVICE
+COPY ["SERVICE/SERVICE.csproj", "SERVICE/"]
+RUN dotnet restore "SERVICE/SERVICE.csproj"
+COPY ["SERVICE/*", "SERVICE/"]
+RUN dotnet build "SERVICE/SERVICE.csproj" -c Release
+
+# Build CUSTOMER
 COPY ["CUSTOMER/CUSTOMER.csproj", "CUSTOMER/"]
 RUN dotnet restore "CUSTOMER/CUSTOMER.csproj"
-COPY . .
-WORKDIR "/src/CUSTOMER"
-RUN dotnet build "CUSTOMER.csproj" -c Release -o /app/build
+COPY ["CUSTOMER/*", "CUSTOMER/"]
+RUN dotnet build "CUSTOMER/CUSTOMER.csproj" -c Release
 
 FROM build AS publish
-RUN dotnet publish "CUSTOMER.csproj" -c Release -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "CUSTOMER/CUSTOMER.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
+
+ARG ASPNETCORE_ENVIRONMENT
+ENV ASPNETCORE_ENVIRONMENT ${ASPNETCORE_ENVIRONMENT}
 ENTRYPOINT ["dotnet", "CUSTOMER.dll"]

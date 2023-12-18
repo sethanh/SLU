@@ -61,8 +61,6 @@ namespace Test.MainTest.Customers
             Assert.Equal(customerStorage?.Mobile, postCustomerBody.Mobile);
             Assert.Equal(customerStorage?.Address, postCustomerBody.Address);
             Assert.Equal(MainSession.Shop.Id, customerStorage?.ShopId);
-
-
         }
     }
 }
