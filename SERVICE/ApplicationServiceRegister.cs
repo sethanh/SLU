@@ -24,6 +24,9 @@ namespace SERVICE
             services.AddScoped<BookingDetailObjectService>();
 
             services.AddScoped<ServiceService>();
+            
+            services.AddScoped<AppModuleService>();
+            services.AddScoped<AppModulePermissionService>();
         }
     }
 }

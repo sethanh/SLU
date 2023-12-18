@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace DATA.EF_BASE
 {
-    public class EntitieBaseSecurity : EntitiesBase
+    public class EntitiesBaseSecurity : EntitiesBase
     {
         public string SecurityStamp { get; set; } = DateTime.Now.ToString();
 

@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace DATA.EF_CORE
 {
-    public class User : EntitieBaseSecurity
+    public class User : EntitiesBaseSecurity
     {
         public string Name { get; set; }
         public string Email { get; set; }

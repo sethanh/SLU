@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DATA.EF_CORE
 {
-    public class CustomerAccountDevice : EntitieBaseSecurity
+    public class CustomerAccountDevice : EntitiesBaseSecurity
     {
         public string DeviceID { get; set; }
         public string DeviceToken { get; set; }

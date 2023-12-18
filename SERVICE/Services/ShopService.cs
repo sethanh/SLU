@@ -9,16 +9,16 @@ namespace SERVICE.Services
 {
     public class ShopService : ApplicationService<Shop>
     {
-        private readonly ShopBranchService _shopBranchService;
-        private readonly UserService _userService;
+        private readonly ShopBranchManager _shopBranchManager;
+        private readonly UserManager _userManager;
         public ShopService(
             ShopManager domainService,
-            ShopBranchService shopBranchService,
-            UserService userService
+            ShopBranchManager shopBranchManager,
+            UserManager userManager
             ) : base(domainService)
         {
-            _shopBranchService = shopBranchService;
-            _userService = userService;
+            _shopBranchManager = shopBranchManager;
+            _userManager = userManager;
         }
 
         public ShopDto InitialShop(
@@ -43,7 +43,7 @@ namespace SERVICE.Services
                 MainBranch = true
             };
 
-            _shopBranchService.Add( mainShopBranch );
+            _shopBranchManager.Add(mainShopBranch, saveChange: true);
 
             var rootUser = new User
             {
@@ -53,9 +53,9 @@ namespace SERVICE.Services
                 ShopId = shop.Id
             };
 
-            _userService.Add(rootUser);
+            _userManager.Add(rootUser, saveChange: true);
 
-            shop.ShopBranchs = new List<ShopBranch>() { mainShopBranch};
+            shop.ShopBranches = new List<ShopBranch>() { mainShopBranch};
             shop.Users = new List<User>() { rootUser };
 
             return shop;
